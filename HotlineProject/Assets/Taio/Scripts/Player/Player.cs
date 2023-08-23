@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float _currentMoveSpeed;     //Velocidad del jugador actual(Por si aplicamos potenciadores etc)
 
     [Header("FOV")]
+    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private float _viewRadius;
     [SerializeField] private float _viewAngle;
     [SerializeField] private LayerMask enemyLayer;
@@ -21,19 +22,23 @@ public class Player : MonoBehaviour
         //_model.OnStartMoving += view.StartMoveAnimation;      //Y esto seria para sumar funciones asi cuando llamamos a la funcion de mover tamb al del respectivo feedback
         _controller = new UserController(_model);       //Creo la clase UserController y le mando esta clase como ref
     }
-
+    private void Start() {
+        fieldOfView.SetValues(_viewRadius, _viewAngle, enemyLayer);     //Inicializo los valores del fov
+    }
     // Update is called once per frame
     void Update()
     {
         _controller.ListenKeys();
+        fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
+        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
 
     private void FixedUpdate() 
     {
         _controller.ListenFixedKeys();
-        //CheckEnemiesInRange();
+        CheckEnemiesInRange();
     }
-/*
+
     private void CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
         Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _viewRadius);       //Agarra colliders dentro del radio
@@ -51,33 +56,19 @@ public class Player : MonoBehaviour
 
     Vector3 GetDirFromAngle(float angle)
     {
-        return new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad));
+        return new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad),Mathf.Cos(angle * Mathf.Deg2Rad), 0);
     }
     
-    public bool InFieldOfView(Vector2 targetPos)
+    public bool InFieldOfView(Vector3 targetPos)
     {
-        Vector2 dir = new Vector2(targetPos.x - transform.position.x, targetPos.y - transform.position.y);
+        Vector3 dir = targetPos - transform.position;
 
         //Que este dentro de la distancia maxima de vision
         if (dir.sqrMagnitude > _viewRadius * _viewRadius) return false;
 
-
+    
         //Que este dentro del angulo
-        return Vector2.Angle(transform.forward, dir) <= _viewAngle/2;
+        return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;
     }
 
-
-    private void OnDrawGizmos()
-    {  
-        var realAngle = _viewAngle / 2;
-
-        Gizmos.color = Color.magenta;
-        Vector3 lineLeft = GetDirFromAngle(-realAngle + transform.eulerAngles.z);
-        Gizmos.DrawLine(transform.position, transform.position + lineLeft * _viewRadius);
-
-        Vector3 lineRight = GetDirFromAngle(realAngle + transform.eulerAngles.z);
-        Gizmos.DrawLine(transform.position, transform.position + lineRight * _viewRadius);
-
-    }
-    */
 }

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    private LayerMask layerMask;       
     private Mesh mesh;
-    [SerializeField] private LayerMask layerMask;
+    private float fov, viewDistance;
+    Vector3 origin;
+    float startingAngle;
+    int rayCount = 50;
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+        origin = Vector3.zero;
     }
 
-    private void Update() {
+    private void Update() {         ///No tengo idea como funciona pero funciona jajaja
         
-        float fov = 90f;
-        Vector3 origin = Vector3.zero;
-        int rayCount = 50;
-        float angle = 0f;
+        float angle = startingAngle;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 5f;
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -59,11 +60,30 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
+        mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
     }
 
     Vector3 GetVectorFromAngle(float angle) {
         //angle = 0 -> 360
         float angleRad = angle * (Mathf.PI/180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
+    }
+
+    float GetAngleFormVectorFloat(Vector3 dir) {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if(n < 0) n += 360;
+        return n;
+    }
+    public void SetOrigin(Vector3 origin) {
+        this.origin = origin;
+    }
+    public void SetAimDirection(Vector3 aimDirection) {
+        startingAngle = GetAngleFormVectorFloat(aimDirection) +  fov / 2f;
+    }
+    public void SetValues(float radius, float angle, LayerMask layer) {
+        viewDistance = radius;
+        fov = angle;
+        layerMask = layer;
     }
 }
