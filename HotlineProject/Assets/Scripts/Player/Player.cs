@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D hitCollider in colliderArray)   
         {
-            if(hitCollider.TryGetComponent<Enemy>(out Enemy enemy)) {   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
+            if(hitCollider.TryGetComponent<EnemyController>(out EnemyController enemy)) {   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
                 if(InFieldOfView(enemy.transform.position))
                 {
                     Debug.Log("attack");
