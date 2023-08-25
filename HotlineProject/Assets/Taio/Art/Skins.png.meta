@@ -1765,16 +1765,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skins_59: -2085614018
+      Skins_63: 1176431335
       Skins_44: 1179847241
       Skins_11: -19460784
       Skins_31: -347561094
-      Skins_63: 1176431335
       Skins_54: 1716664029
       Skins_24: -1304423333
       Skins_26: -1992394476
       Skins_16: 1947869907
       Skins_22: -684383815
+      Skins_28: -1431367921
       Skins_38: 44025458
       Skins_73: 1759105403
       Skins_46: -1296984658
@@ -1804,8 +1804,8 @@ TextureImporter:
       Skins_33: 1111492354
       Skins_35: -1368583243
       Skins_62: -1306169957
-      Skins_61: -2133014832
       Skins_65: -674602925
+      Skins_61: -2133014832
       Skins_66: -1205552891
       Skins_41: 1737889659
       Skins_70: -296363517
@@ -1841,8 +1841,8 @@ TextureImporter:
       Skins_51: -438336261
       Skins_12: -1325369110
       Skins_32: 993302650
+      Skins_59: -2085614018
       Skins_15: -1088325964
-      Skins_28: -1431367921
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
