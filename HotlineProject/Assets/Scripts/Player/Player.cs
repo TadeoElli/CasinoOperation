@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Rigidbody2D _myRb;       
+    [Header("Ref")]
+    public Rigidbody2D _myRb; 
+    public NavMeshAgent agent;      
     PlayerModel _model;
+    [SerializeField] private PlayerView _view;
     UserController _controller;
-    public float _currentMoveSpeed;     //Velocidad del jugador actual(Por si aplicamos potenciadores etc)
 
     [Header("FOV")]
     [SerializeField] private FieldOfView fieldOfView;
@@ -17,10 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         _model = new PlayerModel(this);     //Creo la clase playerModel y le mando esta clase como ref
-        //PlayerView view = new PlayerView(this);       //Desp usaremos esta clase para manejar los aspectos visuales del jugador (feedback, animaciones)
-        //_model.OnStartMoving += view.StartMoveAnimation;      //Y esto seria para sumar funciones asi cuando llamamos a la funcion de mover tamb al del respectivo feedback
-        _controller = new UserController(_model);       //Creo la clase UserController y le mando esta clase como ref
+        _controller = new UserController(_model, _view);       //Creo la clase UserController y le mando el model y el view
+
+        agent.updateUpAxis = false;     //No tocar
     }
     private void Start() {
         fieldOfView.SetValues(_viewRadius, _viewAngle, enemyLayer);     //Inicializo los valores del fov
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour
         _controller.ListenFixedKeys();
         CheckEnemiesInRange();
     }
+
 
     private void CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
