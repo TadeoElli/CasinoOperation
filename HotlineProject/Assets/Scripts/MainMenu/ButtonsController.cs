@@ -8,8 +8,12 @@ public class ButtonsController : Controller
     public EscenasEnum nuevaEscena; // Enum que va a representar a las escenas
     public GameObject objetoLevels;
     public GameObject objetoCustomice;
+    public GameObject objetoHowToPlay;
+    public GameObject objetoStats;
     private bool objetoActivo = false;
     private bool objetoCustomiceActivo = false;
+    private bool objetoInstrucciones = false;
+    private bool objetostats = false;
     public override Vector3 GetInputs()
     {
         throw new System.NotImplementedException();
@@ -28,12 +32,31 @@ public class ButtonsController : Controller
     public void XSelectLevels()
     {
         objetoActivo = false;
+        objetoInstrucciones = false;
+        objetostats = false;
+        objetoHowToPlay.SetActive(objetoInstrucciones);
         objetoLevels.SetActive(objetoActivo);
+        objetoStats.SetActive(objetostats);
+    }
+    public void OkButtom()
+    {
+        objetoCustomiceActivo = false;
+        objetoCustomice.SetActive(objetoCustomiceActivo);
     }
     public void Customice()
     {
-        objetoCustomiceActivo =! objetoCustomiceActivo;
+        objetoCustomiceActivo = true;
         objetoCustomice.SetActive(objetoCustomiceActivo);
+    }
+    public void HowToPlay()
+    {
+        objetoInstrucciones = true;
+        objetoHowToPlay.SetActive(objetoInstrucciones);
+    }
+    public void DeleteStats()
+    {
+        objetostats = true;
+        objetoStats.SetActive(objetostats);
     }
 
     public enum EscenasEnum
