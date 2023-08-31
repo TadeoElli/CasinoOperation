@@ -5,25 +5,29 @@ using UnityEngine;
 public class UserController     //Esta clase va a manejar todos los inputs del jugador
     {
         PlayerModel _model;
+        PlayerView _view;
 
-        float _horizontalAxi, _verticalAxi;
+        Vector3 targetPosition;
 
-        public UserController(PlayerModel model)
+        public UserController(PlayerModel model, PlayerView view)
         {
             _model = model;
+            _view = view;
+            targetPosition = _model._player.transform.position;
         }
 
-        public void ListenKeys()        //Guardo los valores x e y
+        public void ListenKeys()        //Pregunto si se toco en alguna parte del mapa
         {
-            _horizontalAxi = Input.GetAxisRaw("Horizontal");
-
-            _verticalAxi = Input.GetAxisRaw("Vertical");
-
+            if(Input.GetMouseButtonDown(0))
+            {
+                targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
         }
 
-        public void ListenFixedKeys()
+        public void ListenFixedKeys()       //Paso la posicion para moverse y rotar
         {
-            _model.Movement(_horizontalAxi, _verticalAxi);      //Se los mando a la clase modelo
+            _model.Movement(targetPosition);      
+            _view.Rotate(targetPosition);
         }
 
     }

@@ -5,36 +5,24 @@ using UnityEngine;
 public class PlayerModel        //Esta clase va a manejar el gameObject jugador (moverlo, destruirlo si muere etc)
 {
 
-    //Movement
-    [HideInInspector]
-    public Vector2 _moveDir;    //Vector de direccion
-    [HideInInspector]
-    float moveX, moveY;         //Valores de x e y
-
     //public event Action<float> OnStartMoving = delegate { };      Para usar desp
 
     //References
-    Rigidbody2D _myRb;
-    Player _player;
+
+    public Player _player;
+    UnityEngine.AI.NavMeshAgent agent;
 
 
-    public PlayerModel(Player _user)        //Desde Player creo la clase playerModel y le paso el rigidbody y la clase player como ref
+    public PlayerModel(Player _user)        
     {
         _player = _user;
-        _myRb = _player._myRb;
-        
+        agent = _player.agent;
     }
 
-    public void Movement(float horizontal, float vertical)      //Recivo los valores x e y y creo un vector q se va a multiplicar por la velocidad del rgbd
+    public void Movement(Vector3 target)      //Llamo al NavMeshAgent del jugador para indicarle la posicion hacia donde se tiene q mover
     {
-        moveX = horizontal;
-        moveY = vertical;
-
-        _moveDir = new Vector2(moveX, moveY).normalized;
-
-        _myRb.velocity = new Vector2(_moveDir.x * _player._currentMoveSpeed, _moveDir.y * _player._currentMoveSpeed);
-
-        //OnStartMoving(_moveDir.sqrMagnitude);     Para usar desp
+        agent.SetDestination(new Vector3(target.x, target.y, _player.transform.position.z));
+        _player.transform.forward = new Vector3(target.x - _player.transform.position.x, target.y - _player.transform.position.y, _player.transform.position.z);
     }
 
 }
