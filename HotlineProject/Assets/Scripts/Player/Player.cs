@@ -14,10 +14,8 @@ public class Player : MonoBehaviour
     UserController _controller;
 
     [Header("FOV")]
-    [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private float _viewRadius;
     [SerializeField] private float _viewAngle;
-    [SerializeField] private LayerMask enemyLayer;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,14 +25,13 @@ public class Player : MonoBehaviour
         agent.updateUpAxis = false;     //No tocar
     }
     private void Start() {
-        fieldOfView.SetValues(_viewRadius, _viewAngle, enemyLayer);     //Inicializo los valores del fov
+
     }
     // Update is called once per frame
     void Update()
     {
         _controller.ListenKeys();
-        fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
-        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
+
     }
 
     private void FixedUpdate() 
@@ -50,8 +47,8 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D hitCollider in colliderArray)   
         {
-            if(hitCollider.TryGetComponent<EnemyController>(out EnemyController enemy)) {   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
-                if(InFieldOfView(enemy.transform.position))
+            if(hitCollider.gameObject.tag == "Enemy") {   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
+                if(InFieldOfView(hitCollider.transform.position))
                 {
                     Debug.Log("attack");
                 }
@@ -74,6 +71,19 @@ public class Player : MonoBehaviour
     
         //Que este dentro del angulo
         return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;
+    }
+
+    private void OnDrawGizmos()
+    {  
+        var realAngle = _viewAngle / 2;
+
+        Gizmos.color = Color.magenta;
+        Vector3 lineLeft = GetDirFromAngle(-realAngle + transform.eulerAngles.z);
+        Gizmos.DrawLine(transform.position, transform.position + lineLeft * _viewRadius);
+
+        Vector3 lineRight = GetDirFromAngle(realAngle + transform.eulerAngles.z);
+        Gizmos.DrawLine(transform.position, transform.position + lineRight * _viewRadius);
+
     }
 
 }

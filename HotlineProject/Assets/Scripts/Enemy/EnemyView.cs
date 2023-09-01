@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class EnemyView : MonoBehaviour
 {
 
-    [SerializeField] private Player _player;
+    [SerializeField] private Enemy _enemy;
     private void Awake() {
 
     }
@@ -13,7 +13,7 @@ public class PlayerView : MonoBehaviour
     // Update is called once per frame
     void Update()       // Para que el sprite este siempre sobre el player
     {
-        this.transform.position = _player.transform.position;
+        this.transform.position = _enemy.transform.position;
     }
 
     public void Rotate(Vector3 target)      //Roto hacia la direccion donde se esta moviendo

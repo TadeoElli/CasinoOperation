@@ -86,4 +86,5 @@ public class FieldOfView : MonoBehaviour
         fov = angle;
         layerMask = layer;
     }
+
 }
