@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
                 if(hitCollider.TryGetComponent<Player>(out Player player)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
                     if(InFieldOfView(player.transform.position))
                     {
+                        Debug.Log("Te vi");
                         return true;
                     }
                 }
