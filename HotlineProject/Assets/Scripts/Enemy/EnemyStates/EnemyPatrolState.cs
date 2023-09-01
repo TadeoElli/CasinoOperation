@@ -35,6 +35,10 @@ public class EnemyPatrolState : IState
             newPosition = NewPosition();
             //Debug.Log(newPosition);
         }
+        else if(newPosition.x < -16f || newPosition.x > 18f || newPosition.y < -25f || newPosition.y > 45f)
+        {
+            newPosition = NewPosition();
+        }
         else
         {
             isPatrolling = true;
