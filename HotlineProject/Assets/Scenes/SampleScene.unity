@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 7070064}
   - component: {fileID: 7070063}
   - component: {fileID: 7070062}
-  - component: {fileID: 7070066}
   m_Layer: 0
   m_Name: FieldOfView
   m_TagString: Untagged
@@ -220,20 +219,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7070066
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070061}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &156947018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1321,7 @@ GameObject:
   - component: {fileID: 564990997}
   - component: {fileID: 564990998}
   m_Layer: 0
-  m_Name: Model (1)
+  m_Name: EnemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3056,10 +3041,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55eb48b3635c2c4282fb802091115d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   agent: {fileID: 0}
+  _view: {fileID: 564990998}
   timeToPatrol: 4
-  patrolMaxRadius: 8
-  patrolMinRadius: 5
+  patrolMaxRadius: 14.62
+  patrolMinRadius: 8.88
   fieldOfView: {fileID: 7070064}
   _viewRadius: 8
   _viewAngle: 50
