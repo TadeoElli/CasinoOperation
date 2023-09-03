@@ -35,13 +35,14 @@ public class EnemyPatrolState : IState
             newPosition = NewPosition();
             //Debug.Log(newPosition);
         }
-        else if(newPosition.x < -16f || newPosition.x > 18f || newPosition.y < -25f || newPosition.y > 45f)
+        else if(newPosition.x < -13f || newPosition.x > 15f || newPosition.y < -23f || newPosition.y > 45f)
         {
             newPosition = NewPosition();
         }
         else
         {
             isPatrolling = true;
+            _enemy._view.Rotate(newPosition);
             agent.SetDestination(new Vector3(newPosition.x, newPosition.y, _enemy.transform.position.z));
             _enemy.transform.forward = new Vector3(newPosition.x - _enemy.transform.position.x, newPosition.y - _enemy.transform.position.y, _enemy.transform.position.z);
         }
@@ -52,7 +53,11 @@ public class EnemyPatrolState : IState
         if(Vector2.Distance(_enemy.transform.position, agent.destination) < 1 && isPatrolling)
         {
             _fsm.ChangeState(EnemyStates.Idle);
-            
+        }
+        else
+        {
+            if(_enemy.CheckEnemiesInRange())
+                _fsm.ChangeState(EnemyStates.Attack);
         }
     }
 

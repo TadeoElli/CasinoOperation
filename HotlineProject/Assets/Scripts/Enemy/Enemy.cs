@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+public enum EnemyBehavior
+{
+    Shooter,
+    Melee,
+    Kamikaze
+}
 public class Enemy : MonoBehaviour
 {
 
     FSM<EnemyStates> _FSM;
+    [SerializeField] private EnemyBehavior enemyType;
     public NavMeshAgent agent; 
+
+    [SerializeField] public EnemyView _view;
 
     [Header ("Patrol")]
     public float timeToPatrol;
@@ -27,7 +37,20 @@ public class Enemy : MonoBehaviour
         _FSM.AddState(EnemyStates.Idle, new EnemyIdleState(_FSM, this));
         _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolState(_FSM, this));
 
-
+        switch(enemyType)
+        {
+            case EnemyBehavior.Shooter:
+                _FSM.AddState(EnemyStates.Attack, new EnemyShooterState(_FSM, this));
+                break;
+            case EnemyBehavior.Kamikaze:
+                _FSM.AddState(EnemyStates.Attack, new EnemyKamikazeState(_FSM, this));
+                break;
+            case EnemyBehavior.Melee:
+                _FSM.AddState(EnemyStates.Attack, new EnemyMeleeState(_FSM, this));
+                break;
+            default:
+                break;
+        }
         _FSM.ChangeState(EnemyStates.Idle);
     }
 
@@ -38,7 +61,7 @@ public class Enemy : MonoBehaviour
     private void Update() {
         _FSM.Update();
         _FSM.FixedUpdate();
-
+        CheckEnemiesInRange();
         fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
         fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
@@ -55,7 +78,6 @@ public class Enemy : MonoBehaviour
                 if(hitCollider.TryGetComponent<Player>(out Player player)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
                     if(InFieldOfView(player.transform.position))
                     {
-                        Debug.Log("Te vi");
                         return true;
                     }
                 }
