@@ -10,6 +10,7 @@ public class FieldOfView : MonoBehaviour
     Vector3 origin;
     float startingAngle;
     int rayCount = 50;
+
     void Start()
     {
         mesh = new Mesh();

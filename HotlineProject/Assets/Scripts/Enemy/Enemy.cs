@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum EnemyBehavior
+public enum EnemyBehaviour
 {
     Shooter,
     Melee,
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 {
 
     FSM<EnemyStates> _FSM;
-    [SerializeField] private EnemyBehavior enemyType;
+    [SerializeField] private EnemyBehaviour enemyType;
     public NavMeshAgent agent; 
 
     [SerializeField] public EnemyView _view;
@@ -22,11 +22,15 @@ public class Enemy : MonoBehaviour
     public float timeToPatrol;
     public float patrolMaxRadius;
     public float patrolMinRadius;
+
     [Header("FOV")]
     [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private float _viewRadius;
     [SerializeField] private float _viewAngle;
     [SerializeField] private LayerMask objectLayer;
+
+    [SerializeField] public Collider2D enemyCollider; //Cambiar de lugar esta refe, es temporal
+
     void Awake()
     {
         _FSM = new FSM<EnemyStates>();
@@ -39,13 +43,13 @@ public class Enemy : MonoBehaviour
 
         switch(enemyType)
         {
-            case EnemyBehavior.Shooter:
+            case EnemyBehaviour.Shooter:
                 _FSM.AddState(EnemyStates.Attack, new EnemyShooterState(_FSM, this));
                 break;
-            case EnemyBehavior.Kamikaze:
+            case EnemyBehaviour.Kamikaze:
                 _FSM.AddState(EnemyStates.Attack, new EnemyKamikazeState(_FSM, this));
                 break;
-            case EnemyBehavior.Melee:
+            case EnemyBehaviour.Melee:
                 _FSM.AddState(EnemyStates.Attack, new EnemyMeleeState(_FSM, this));
                 break;
             default:
@@ -61,11 +65,15 @@ public class Enemy : MonoBehaviour
     private void Update() {
         _FSM.Update();
         _FSM.FixedUpdate();
-        CheckEnemiesInRange();
+
+        if (CheckEnemiesInRange())
+        {
+            _FSM.ChangeState(EnemyStates.Attack);
+        }
+           
         fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
         fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
-
 
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
@@ -88,7 +96,6 @@ public class Enemy : MonoBehaviour
             return false;
     }
 
-    
     private bool InFieldOfView(Vector3 targetPos)
     {
         Vector3 dir = targetPos - transform.position;
@@ -100,7 +107,6 @@ public class Enemy : MonoBehaviour
         //Que este dentro del angulo
         return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;
     }
-
 
     private void OnDrawGizmos()
     {  
