@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyMeleeState : IState
 {
-    // Start is called before the first frame update
 
     Enemy _enemy;
 
@@ -21,6 +20,7 @@ public class EnemyMeleeState : IState
     }
     public void OnEnter()
     {
+        _enemy.enemyCollider.gameObject.SetActive(true);
         Debug.Log("melee");
     }
 
