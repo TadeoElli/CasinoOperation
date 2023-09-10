@@ -9,17 +9,25 @@ public enum EnemyBehaviour
     Melee,
     Kamikaze
 }
+public enum EnemyPatrol
+{
+    Random,
+    Waypoints
+}
 public class Enemy : MonoBehaviour
 {
 
     FSM<EnemyStates> _FSM;
     [SerializeField] private EnemyBehaviour enemyType;
+    [SerializeField] private EnemyPatrol enemyPatrol;
     public NavMeshAgent agent; 
 
     [SerializeField] public EnemyView _view;
 
     [Header ("Patrol")]
     public float timeToPatrol;
+    public GameObject[] waypoints;
+    public int currentWaypoint;
     public float patrolMaxRadius;
     public float patrolMinRadius;
 
@@ -39,7 +47,17 @@ public class Enemy : MonoBehaviour
 
         IState idle = new EnemyIdleState(_FSM, this);
         _FSM.AddState(EnemyStates.Idle, new EnemyIdleState(_FSM, this));
-        _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolState(_FSM, this));
+        switch(enemyPatrol)
+        {
+            case EnemyPatrol.Random:
+                _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolRandomState(_FSM, this));
+                break;
+            case EnemyPatrol.Waypoints:
+                _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolWaypointsState(_FSM, this));
+                break;
+            default:
+                break;
+        }
 
         switch(enemyType)
         {
@@ -60,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     private void Start() {
         fieldOfView.SetValues(_viewRadius, _viewAngle, objectLayer);     //Inicializo los valores del fov
+        currentWaypoint = 0;
     }
 
     private void Update() {

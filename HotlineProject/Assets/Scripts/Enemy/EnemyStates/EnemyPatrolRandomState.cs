@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolState : IState
+public class EnemyPatrolRandomState : IState
 {
 
     Enemy _enemy;
@@ -12,7 +12,7 @@ public class EnemyPatrolState : IState
     bool isPatrolling;
 
 
-    public EnemyPatrolState(FSM<EnemyStates> fsm, Enemy enemy)
+    public EnemyPatrolRandomState(FSM<EnemyStates> fsm, Enemy enemy)
     {
         _enemy = enemy;
 
