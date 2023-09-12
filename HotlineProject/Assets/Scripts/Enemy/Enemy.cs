@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent; 
 
     [SerializeField] public EnemyView _view;
+    public float rotationSpeed;
 
     [Header ("Patrol")]
     public float timeToPatrol;
@@ -85,13 +86,16 @@ public class Enemy : MonoBehaviour
         _FSM.Update();
         _FSM.FixedUpdate();
 
+        
+           
+        fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
+        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
+    }
+    private void FixedUpdate() {
         if (CheckEnemiesInRange())
         {
             _FSM.ChangeState(EnemyStates.Attack);
         }
-           
-        fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
-        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
 
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
@@ -118,15 +122,21 @@ public class Enemy : MonoBehaviour
     private bool InFieldOfView(Vector3 targetPos)
     {
         Vector3 dir = targetPos - transform.position;
-
+        Debug.DrawLine(transform.position, targetPos, Color.red);
         //Que este dentro de la distancia maxima de vision
         if (dir.sqrMagnitude > _viewRadius * _viewRadius) return false;
 
+        if (InLineOfSight(dir)) return false;
     
         //Que este dentro del angulo
         return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;
     }
-
+    private bool InLineOfSight(Vector3 direction)
+    {
+        //RaycastHit hit;
+        return Physics2D.Raycast(transform.position, direction, _viewRadius, objectLayer);
+        //return Physics.SphereCast(transform.position,1.5f, direction, out hit, direction.magnitude, objectLayer);
+    }
     private void OnDrawGizmos()
     {  
         ///FOV Gizmos

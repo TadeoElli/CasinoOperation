@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     [Header("FOV")]
     [SerializeField] private float _viewRadius;
     [SerializeField] private float _viewAngle;
+
+    [SerializeField] private FieldOfView fieldOfView;
+    [SerializeField] private LayerMask objectLayer;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -25,13 +28,14 @@ public class Player : MonoBehaviour
         agent.updateUpAxis = false;     //No tocar
     }
     private void Start() {
-
+        fieldOfView.SetValues(_viewRadius, _viewAngle, objectLayer);     //Inicializo los valores del fov
     }
     // Update is called once per frame
     void Update()
     {
         _controller.ListenKeys();
-
+        fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
+        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
 
     private void FixedUpdate() 

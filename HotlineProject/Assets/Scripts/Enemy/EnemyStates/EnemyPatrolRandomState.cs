@@ -44,7 +44,8 @@ public class EnemyPatrolRandomState : IState
             isPatrolling = true;
             _enemy._view.Rotate(newPosition);
             agent.SetDestination(new Vector3(newPosition.x, newPosition.y, _enemy.transform.position.z));
-            _enemy.transform.forward = new Vector3(newPosition.x - _enemy.transform.position.x, newPosition.y - _enemy.transform.position.y, _enemy.transform.position.z);
+            Quaternion rotTarget = Quaternion.LookRotation(newPosition - _enemy.transform.position);
+            _enemy.transform.rotation = Quaternion.RotateTowards(_enemy.transform.rotation, rotTarget, _enemy.rotationSpeed * Time.deltaTime);
         }
     }
 
