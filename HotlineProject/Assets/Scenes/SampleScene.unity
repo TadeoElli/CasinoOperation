@@ -3151,7 +3151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
-  enemyPatrol: 1
+  enemyPatrol: 0
   agent: {fileID: 0}
   _view: {fileID: 564990998}
   rotationSpeed: 100
