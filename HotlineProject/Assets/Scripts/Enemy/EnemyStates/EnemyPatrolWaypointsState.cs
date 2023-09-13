@@ -22,7 +22,7 @@ public class EnemyPatrolWaypointsState : IState
     }
     public void OnEnter()
     {
-        newPosition = _enemy.waypoints[_enemy.currentWaypoint].transform.position;
+        newPosition = _enemy.waypoints[_enemy.currentWaypoint];
 
         //Debug.Log(newPosition);
     }

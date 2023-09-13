@@ -23,12 +23,13 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent; 
 
     [SerializeField] public EnemyView _view;
-    public float rotationSpeed, timeToReturn;
+    public float rotationSpeed, timeToReturn, attackRadius;
     [HideInInspector] public Vector3 newPosition;
+    [HideInInspector] public Transform playerPosition;
 
     [Header ("Patrol")]
     public float timeToPatrol;
-    public GameObject[] waypoints;
+    public Vector3[] waypoints;
     public int currentWaypoint;
     public float patrolMaxRadius;
     public float patrolMinRadius;
@@ -114,6 +115,7 @@ public class Enemy : MonoBehaviour
                 if(hitCollider.TryGetComponent<Player>(out Player player)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
                     if(InFieldOfView(player.transform.position))
                     {
+                        playerPosition = player.transform;
                         return true;
                     }
                 }
@@ -130,15 +132,15 @@ public class Enemy : MonoBehaviour
         //Que este dentro de la distancia maxima de vision
         if (dir.sqrMagnitude > _viewRadius * _viewRadius) return false;
 
-        if (InLineOfSight(dir)) return false;
+        if (InLineOfSight(dir, _viewRadius)) return false;
     
         //Que este dentro del angulo
         return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;
     }
-    private bool InLineOfSight(Vector3 direction)
+    public bool InLineOfSight(Vector3 direction, float radius)
     {
         //RaycastHit hit;
-        return Physics2D.Raycast(transform.position, direction, _viewRadius, objectLayer);
+        return Physics2D.Raycast(transform.position, direction, radius, objectLayer);
         //return Physics.SphereCast(transform.position,1.5f, direction, out hit, direction.magnitude, objectLayer);
     }
     private void OnDrawGizmos()
