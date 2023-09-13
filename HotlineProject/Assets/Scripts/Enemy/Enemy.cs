@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent; 
 
     [SerializeField] public EnemyView _view;
-    public float rotationSpeed;
+    public float rotationSpeed, timeToReturn;
+    [HideInInspector] public Vector3 newPosition;
 
     [Header ("Patrol")]
     public float timeToPatrol;
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
 
         IState idle = new EnemyIdleState(_FSM, this);
         _FSM.AddState(EnemyStates.Idle, new EnemyIdleState(_FSM, this));
+        _FSM.AddState(EnemyStates.Search, new EnemySearchState(_FSM, this));
         switch(enemyPatrol)
         {
             case EnemyPatrol.Random:
@@ -84,20 +86,23 @@ public class Enemy : MonoBehaviour
 
     private void Update() {
         _FSM.Update();
-        _FSM.FixedUpdate();
-
-        
+    
            
         fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
         fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
     }
     private void FixedUpdate() {
+        _FSM.FixedUpdate();
         if (CheckEnemiesInRange())
         {
             _FSM.ChangeState(EnemyStates.Attack);
         }
     }
-
+    public void SearchNPC(Vector3 direction)
+    {
+        newPosition = direction;
+        _FSM.ChangeState(EnemyStates.Search);
+    }
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
         Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _viewRadius);       //Agarra colliders dentro del radio

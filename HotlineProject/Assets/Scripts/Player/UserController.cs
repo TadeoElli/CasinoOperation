@@ -22,12 +22,22 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
             {
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                MoneyAbility();
+            }
         }
 
         public void ListenFixedKeys()       //Paso la posicion para moverse y rotar
         {
             _model.Movement(targetPosition);      
             _view.Rotate(targetPosition);
+        }
+
+        private void MoneyAbility()
+        {
+            _model.ThrowMoney();
+            
         }
 
     }

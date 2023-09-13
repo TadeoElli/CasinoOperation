@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private LayerMask objectLayer;
+
+    [Header("Hability")]
+    [SerializeField] public float moneyRadius;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -87,7 +90,8 @@ public class Player : MonoBehaviour
 
         Vector3 lineRight = GetDirFromAngle(realAngle + transform.eulerAngles.z);
         Gizmos.DrawLine(transform.position, transform.position + lineRight * _viewRadius);
-
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, moneyRadius);
     }
 
 }

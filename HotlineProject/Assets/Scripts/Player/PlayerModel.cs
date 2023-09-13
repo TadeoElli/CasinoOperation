@@ -25,4 +25,15 @@ public class PlayerModel        //Esta clase va a manejar el gameObject jugador 
         _player.transform.forward = new Vector3(target.x - _player.transform.position.x, target.y - _player.transform.position.y, _player.transform.position.z);
     }
 
+    public void ThrowMoney()
+    {
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(_player.transform.position, _player.moneyRadius);       //Agarra colliders dentro del radio
+
+        foreach (Collider2D hitCollider in colliderArray)   
+        {
+            if(hitCollider.TryGetComponent<NPC>(out NPC npc)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
+                    npc.SearchMoney(_player.transform.position);
+                }
+        }
+    }
 }
