@@ -122,7 +122,6 @@ public class Enemy : MonoBehaviour
     private bool InFieldOfView(Vector3 targetPos)
     {
         Vector3 dir = targetPos - transform.position;
-        Debug.DrawLine(transform.position, targetPos, Color.red);
         //Que este dentro de la distancia maxima de vision
         if (dir.sqrMagnitude > _viewRadius * _viewRadius) return false;
 

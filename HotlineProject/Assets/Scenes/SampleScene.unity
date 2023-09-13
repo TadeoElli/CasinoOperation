@@ -1400,6 +1400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1352333499}
+  rotationModifier: 270
+  rotationSpeed: 2.4
 --- !u!1 &623658510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,6 +3158,9 @@ MonoBehaviour:
   timeToPatrol: 4
   waypoints:
   - {fileID: 1715137679}
+  - {fileID: 659148394}
+  - {fileID: 1322565612}
+  - {fileID: 1581271521}
   currentWaypoint: 0
   patrolMaxRadius: 14.62
   patrolMinRadius: 8.88
