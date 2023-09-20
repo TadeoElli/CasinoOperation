@@ -4,44 +4,78 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public UnityEngine.AI.NavMeshAgent agent; 
-    private Vector3 originPosition;
+    private UnityEngine.AI.NavMeshAgent agent; 
+    private UnityEngine.AI.NavMeshObstacle obstacle;
+    private Vector3 originPosition, newPosition;
+    [SerializeField] private Vector3[] waypoints;
     [SerializeField] public NPCView _view;
-    private float timer = 0f;
-    [SerializeField] private float timeToReturn, moneyRadius;
-    private bool isMoving;
+    private float timer1 = 0f;
+    private float timer2 = 0f;
+    private int currentWaypoint;
+    [SerializeField] private float timeToReturn, moneyRadius, timeToPatrol;
+    private bool isMoving, isReturning;
+    [SerializeField] private bool hasPatrol;
 
     //[SerializeField] public EnemyView _view;
 
     private void Awake() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.updateUpAxis = false;     //No tocar
+        obstacle = GetComponent<UnityEngine.AI.NavMeshObstacle>();
 
     }
     void Start()
     {  
         isMoving = false;
+        isReturning = false;
+        currentWaypoint = 0;
         originPosition = transform.position;
+        obstacle.enabled = !obstacle.enabled;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isMoving)
+        
+        if(hasPatrol && !isMoving)
         {
-            if(Vector3.Distance(transform.position, agent.destination) < 2f)
+            if(timer2 > timeToPatrol)
             {
-                if(timer > timeToReturn)
+                obstacle.enabled = false;
+                agent.enabled = true;
+                _view.Rotate(waypoints[currentWaypoint]);
+                agent.SetDestination(new Vector3(waypoints[currentWaypoint].x, waypoints[currentWaypoint].y, transform.position.z));
+                if(Vector3.Distance(transform.position, waypoints[currentWaypoint]) < 2f)
                 {
-                    agent.SetDestination(originPosition);
-                    _view.Rotate(originPosition);
-                    isMoving = false;
+                    timer2 = 0f;
+                    currentWaypoint++;
+                    if(currentWaypoint >= waypoints.Length)
+                        currentWaypoint = 0;
+                    agent.enabled = false;
+                }
+            }
+            else
+            {
+                timer2 = timer2 + 1 * Time.deltaTime;
+                obstacle.enabled = true;
+            }
+        }
+    }
 
-                    
-                    
+    private void FixedUpdate() {
+
+        if(isMoving && !isReturning)
+        {
+            if(Vector3.Distance(transform.position, newPosition) < 2f)
+            {
+                if(timer1 > timeToReturn)
+                {
+                    isReturning = true;
                 }
                 else
                 {
+                    agent.enabled = false;
+                    obstacle.enabled = true;
                     Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, moneyRadius);       //Agarra colliders dentro del radio
 
                     foreach (Collider2D hitCollider in colliderArray)   
@@ -50,22 +84,41 @@ public class NPC : MonoBehaviour
                                 enemy.SearchNPC(transform.position);
                             }
                     }
-                    timer = timer + 1 * Time.deltaTime;
+                    timer1 = timer1 + 1 * Time.deltaTime;
                 }
+            }
+        }
+        else if(isMoving && isReturning)
+        {
+            obstacle.enabled = false;
+            agent.enabled = true;
+            agent.SetDestination(originPosition);
+            _view.Rotate(originPosition);
+            if(Vector3.Distance(transform.position, agent.destination) < 2f)
+            {
+                isMoving = false;
+                isReturning = false;
+                agent.enabled = false;
+                obstacle.enabled = true;
             }
         }
     }
 
-    private void FixedUpdate() {
-
-    }
-
     public void SearchMoney(Vector3 direction)
     {
-        agent.SetDestination(new Vector3(direction.x, direction.y, transform.position.z));
-        _view.Rotate(direction);
+        newPosition = direction;
+        obstacle.enabled = false;
+        agent.enabled = true;
+        agent.SetDestination(new Vector3(newPosition.x, newPosition.y, transform.position.z));
+        _view.Rotate(newPosition);
         isMoving = true;
-        timer = 0f;
+        timer1 = 0f;
+    }
+
+    private void EnableNavMesh()
+    {
+        agent.enabled = !agent.enabled;
+        obstacle.enabled = !obstacle.enabled;
     }
 
     private void OnDrawGizmos()
