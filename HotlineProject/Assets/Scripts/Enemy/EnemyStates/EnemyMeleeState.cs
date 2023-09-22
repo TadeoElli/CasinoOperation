@@ -26,14 +26,14 @@ public class EnemyMeleeState : IState
 
     public void OnUpdate()
     {
-        if(Vector3.Distance(_enemy.transform.position, _enemy.playerPosition.position) < _enemy.patrolMinRadius)
+        if(Vector3.Distance(_enemy.transform.position, _enemy.playerPosition.position) < _enemy._minViewRadius)
         {
             Move();
         }
         else
         {
             Vector3 dir = _enemy.playerPosition.position - _enemy.transform.position; 
-            if(Vector3.Distance(_enemy.transform.position, _enemy.playerPosition.position) < _enemy.patrolMaxRadius && !_enemy.InLineOfSight(dir, _enemy.patrolMaxRadius))
+            if(Vector3.Distance(_enemy.transform.position, _enemy.playerPosition.position) < _enemy._maxViewRadius && !_enemy.InLineOfSight(dir, _enemy._maxViewRadius))
             {
                 Move();
             }

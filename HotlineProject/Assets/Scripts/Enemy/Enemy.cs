@@ -30,13 +30,15 @@ public class Enemy : MonoBehaviour
     [Header ("Patrol")]
     public float timeToPatrol;
     public Vector3[] waypoints;
+    public Vector3 originPosition;
     public int currentWaypoint;
     public float patrolMaxRadius;
     public float patrolMinRadius;
 
     [Header("FOV")]
     [SerializeField] private FieldOfView fieldOfView;
-    [SerializeField] private float _viewRadius;
+    [SerializeField] public float _minViewRadius;
+    [SerializeField] public float _maxViewRadius;
     [SerializeField] private float _viewAngle;
     [SerializeField] private LayerMask objectLayer;
 
@@ -55,6 +57,7 @@ public class Enemy : MonoBehaviour
         {
             case EnemyPatrol.Random:
                 _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolRandomState(_FSM, this));
+                _FSM.AddState(EnemyStates.Return, new EnemyReturnState(_FSM, this));
                 break;
             case EnemyPatrol.Waypoints:
                 _FSM.AddState(EnemyStates.Patrol, new EnemyPatrolWaypointsState(_FSM, this));
@@ -81,8 +84,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void Start() {
-        fieldOfView.SetValues(_viewRadius, _viewAngle, objectLayer);     //Inicializo los valores del fov
+        fieldOfView.SetValues(_minViewRadius, _viewAngle, objectLayer);     //Inicializo los valores del fov
         currentWaypoint = 0;
+        originPosition = this.transform.position;
     }
 
     private void Update() {
@@ -106,7 +110,7 @@ public class Enemy : MonoBehaviour
     }
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
-        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _viewRadius);       //Agarra colliders dentro del radio
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _minViewRadius);       //Agarra colliders dentro del radio
 
         if(colliderArray != null)
         {
@@ -130,9 +134,9 @@ public class Enemy : MonoBehaviour
     {
         Vector3 dir = targetPos - transform.position;
         //Que este dentro de la distancia maxima de vision
-        if (dir.sqrMagnitude > _viewRadius * _viewRadius) return false;
+        if (dir.sqrMagnitude > _minViewRadius * _minViewRadius) return false;
 
-        if (InLineOfSight(dir, _viewRadius)) return false;
+        if (InLineOfSight(dir, _minViewRadius)) return false;
     
         //Que este dentro del angulo
         return Vector3.Angle(transform.forward, dir) <= _viewAngle/2;

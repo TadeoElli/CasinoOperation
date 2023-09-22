@@ -23,6 +23,8 @@ public class EnemyPatrolRandomState : IState
     public void OnEnter()
     {
         newPosition = NewPosition();
+        if(Vector2.Distance(_enemy.transform.position, _enemy.originPosition) > 20f)
+            _fsm.ChangeState(EnemyStates.Return);
         isPatrolling = false;
         //Debug.Log(newPosition);
     
@@ -35,7 +37,7 @@ public class EnemyPatrolRandomState : IState
             newPosition = NewPosition();
             //Debug.Log(newPosition);
         }
-        else if(newPosition.x < -13f || newPosition.x > 15f || newPosition.y < -23f || newPosition.y > 45f)
+        else if(newPosition.x < -49.5f || newPosition.x > 57.5f || newPosition.y < -28f || newPosition.y > 51f)
         {
             newPosition = NewPosition();
         }
