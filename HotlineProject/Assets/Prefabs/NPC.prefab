@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3390423297995018438}
   - component: {fileID: 3390423297995018433}
   - component: {fileID: 3390423297995018437}
+  - component: {fileID: 1325274848}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -94,7 +95,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3390423297995018432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 8
@@ -137,7 +138,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d2ae7ae2613647b5bbe9122b3823f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  waypoints: []
   _view: {fileID: 0}
   timeToReturn: 10
   moneyRadius: 14
+  timeToPatrol: 0
+  hasPatrol: 0
+  isWorker: 1
+--- !u!208 &1325274848
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390423297995018432}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5, y: 1.5, z: 1.5}
+  m_MoveThreshold: 0
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.88}
+  m_TimeToStationary: 0

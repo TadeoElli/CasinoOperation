@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour
     private int currentWaypoint;
     [SerializeField] private float timeToReturn, moneyRadius, timeToPatrol;
     private bool isMoving, isReturning;
-    [SerializeField] private bool hasPatrol;
+    [SerializeField] private bool hasPatrol, isWorker;
 
     //[SerializeField] public EnemyView _view;
 
@@ -106,13 +106,16 @@ public class NPC : MonoBehaviour
 
     public void SearchMoney(Vector3 direction)
     {
-        newPosition = direction;
-        obstacle.enabled = false;
-        agent.enabled = true;
-        agent.SetDestination(new Vector3(newPosition.x, newPosition.y, transform.position.z));
-        _view.Rotate(newPosition);
-        isMoving = true;
-        timer1 = 0f;
+        if(!isWorker)
+        {
+            newPosition = direction;
+            obstacle.enabled = false;
+            agent.enabled = true;
+            agent.SetDestination(new Vector3(newPosition.x, newPosition.y, transform.position.z));
+            _view.Rotate(newPosition);
+            isMoving = true;
+            timer1 = 0f;
+        }
     }
 
     private void EnableNavMesh()
