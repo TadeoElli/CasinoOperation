@@ -36,13 +36,14 @@ public class Enemy : MonoBehaviour
     public float patrolMinRadius;
 
     [Header("FOV")]
-    [SerializeField] private FieldOfView fieldOfView;
+    [SerializeField] public FieldOfView fieldOfView;
     [SerializeField] public float _minViewRadius;
     [SerializeField] public float _maxViewRadius;
     [SerializeField] private float _viewAngle;
     [SerializeField] private LayerMask objectLayer;
 
     [SerializeField] public Collider2D enemyCollider; //Cambiar de lugar esta refe, es temporal
+    [HideInInspector] public bool isAlert;
 
     void Awake()
     {
@@ -87,6 +88,7 @@ public class Enemy : MonoBehaviour
         fieldOfView.SetValues(_minViewRadius, _viewAngle, objectLayer);     //Inicializo los valores del fov
         currentWaypoint = 0;
         originPosition = this.transform.position;
+        isAlert = false;
     }
 
     private void Update() {
@@ -105,8 +107,11 @@ public class Enemy : MonoBehaviour
     }
     public void SearchNPC(Vector3 direction)
     {
-        newPosition = direction;
-        _FSM.ChangeState(EnemyStates.Search);
+        if(!isAlert)
+        {
+            newPosition = direction;
+            _FSM.ChangeState(EnemyStates.Search);
+        }
     }
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {

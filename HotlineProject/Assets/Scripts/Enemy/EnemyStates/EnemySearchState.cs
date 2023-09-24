@@ -24,6 +24,7 @@ public class EnemySearchState : IState
     {
         newPosition = _enemy.newPosition;
         timer = 0f;
+        _enemy.fieldOfView.ChangeSearchMaterial();
     }
 
     public void OnUpdate()
@@ -61,7 +62,7 @@ public class EnemySearchState : IState
 
     public void OnExit()
     {
-
+        _enemy.fieldOfView.RestoreMaterial();
     }
 
 }

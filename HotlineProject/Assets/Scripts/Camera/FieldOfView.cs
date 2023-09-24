@@ -6,6 +6,9 @@ public class FieldOfView : MonoBehaviour
 {
     private LayerMask layerMask;       
     private Mesh mesh;
+    private Renderer render;
+    private Material originMaterial;
+    [SerializeField] private Material alertMaterial, searchMaterial;
     private float fov, viewDistance;
     Vector3 origin;
     float startingAngle;
@@ -15,7 +18,9 @@ public class FieldOfView : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+        render = GetComponent<Renderer>();
         origin = Vector3.zero;
+        originMaterial = GetComponent<Renderer>().material;
     }
 
     private void Update() {         ///No tengo idea como funciona pero funciona jajaja
@@ -86,6 +91,18 @@ public class FieldOfView : MonoBehaviour
         viewDistance = radius;
         fov = angle;
         layerMask = layer;
+    }
+    public void ChangeAlertMaterial()
+    {
+        render.material = alertMaterial;
+    }
+    public void ChangeSearchMaterial()
+    {
+        render.material = searchMaterial;
+    }
+    public void RestoreMaterial()
+    {
+        render.material = originMaterial;
     }
 
 }

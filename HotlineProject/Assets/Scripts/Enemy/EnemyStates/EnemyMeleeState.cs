@@ -21,7 +21,8 @@ public class EnemyMeleeState : IState
     public void OnEnter()
     {
         //_enemy.enemyCollider.gameObject.SetActive(true);
-        
+        _enemy.fieldOfView.ChangeAlertMaterial();
+        _enemy.isAlert = true;
     }
 
     public void OnUpdate()
@@ -54,6 +55,8 @@ public class EnemyMeleeState : IState
 
     public void OnExit()
     {
+        _enemy.fieldOfView.RestoreMaterial();
+        _enemy.isAlert = false;
     }
 
     private void Move()
