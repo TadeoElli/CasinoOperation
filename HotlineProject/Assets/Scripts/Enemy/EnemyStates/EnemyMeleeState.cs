@@ -49,7 +49,8 @@ public class EnemyMeleeState : IState
     {
         if(Vector3.Distance(_enemy.transform.position, _enemy.playerPosition.position) < _enemy.attackRadius)
         {
-            Debug.Log("melee");
+           //GameManager.Instance.EndLevel();
+           Debug.Log("Melee");
         }
     }
 
