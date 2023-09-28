@@ -7,7 +7,7 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
         PlayerModel _model;
         PlayerView _view;
 
-        Vector3 targetPosition;
+        public Vector3 targetPosition;
 
         public UserController(PlayerModel model, PlayerView view)
         {

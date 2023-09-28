@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public NavMeshAgent agent;      
     PlayerModel _model;
     [SerializeField] private PlayerView _view;
-    UserController _controller;
+    public UserController  _controller;
 
     [Header("FOV")]
     [SerializeField] private float _viewRadius;
@@ -94,4 +94,11 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, moneyRadius);
     }
 
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            GameManager.Instance.EndLevel();
+        }
+    }
 }
