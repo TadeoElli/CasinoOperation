@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     [Header("Hability")]
     [SerializeField] public float moneyRadius;
+    [SerializeField] private GameObject money;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

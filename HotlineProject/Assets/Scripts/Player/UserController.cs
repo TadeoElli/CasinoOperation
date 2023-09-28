@@ -37,6 +37,11 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
         private void MoneyAbility()
         {
             _model.ThrowMoney();
+            var newMoney = MoneyFactory.Instance.GetObject();
+
+            //Seteamos la posicion
+            newMoney.transform.position = _model._player.transform.position;
+            
             
         }
 
