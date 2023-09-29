@@ -24,8 +24,12 @@ public class ObjectivePointer : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        this.transform.position = _player.transform.position;
-        Rotate(objective.transform.position);
+        else
+        {
+            this.transform.position = _player.transform.position;
+            Rotate(objective.transform.position);
+        }
+        
     }
 
     private void Rotate(Vector3 target)
