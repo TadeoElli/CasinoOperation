@@ -22,7 +22,7 @@ public class ButtonsController : Controller
     public void StartLevel()
     {
         string nombreEscena = nuevaEscena.ToString(); // Esto lo convierte a String que si bien no le estoy dando utilidad ahora
-        SceneManager.LoadScene(0);                    // Va a servir para el selector de niveles
+        SceneManager.LoadScene(1);                    // Va a servir para el selector de niveles
     }
     public void SelectLevels()
     {
@@ -61,6 +61,6 @@ public class ButtonsController : Controller
 
     public enum EscenasEnum
     {
-        SampleScene
+        SampleScene = 1
     }
 }
