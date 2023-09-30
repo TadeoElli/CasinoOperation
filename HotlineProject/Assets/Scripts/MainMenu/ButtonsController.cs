@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsController : Controller
 {
-    public EscenasEnum nuevaEscena; // Enum que va a representar a las escenas
     public GameObject objetoLevels;
     public GameObject objetoCustomice;
     public GameObject objetoHowToPlay;
@@ -19,11 +18,6 @@ public class ButtonsController : Controller
         throw new System.NotImplementedException();
     }
 
-    public void StartLevel()
-    {
-        string nombreEscena = nuevaEscena.ToString(); // Esto lo convierte a String que si bien no le estoy dando utilidad ahora
-        SceneManager.LoadScene(1);                    // Va a servir para el selector de niveles
-    }
     public void SelectLevels()
     {
         objetoActivo = true; // Cambia el estado del objeto
@@ -57,10 +51,5 @@ public class ButtonsController : Controller
     {
         objetostats = true;
         objetoStats.SetActive(objetostats);
-    }
-
-    public enum EscenasEnum
-    {
-        SampleScene = 1
     }
 }
