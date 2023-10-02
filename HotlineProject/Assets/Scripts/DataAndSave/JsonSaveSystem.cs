@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO; //Crea o busca una direccion de carpeta para guardar el archivo JSON - path
+
+public class JsonSaveSystem : MonoBehaviour
+{
+    [SerializeField] MoneyFactory _moneyFactory = new MoneyFactory();
+    string path;
+
+    public void Awake()
+    {
+
+        path = Application.persistentDataPath + "/SaveData.json"; // Lo guarda en una carpeta existente en android
+    }
+
+    private void Update()
+    {
+
+    }
+
+    private void SaveGame()
+    {
+        string json = JsonUtility.ToJson(_moneyFactory); //transforma esta clase de archivo a Json
+        File.WriteAllText(path, json);
+    }
+
+    private void LoadGame()
+    {
+        string json = File.ReadAllText(path); //Busca y Encuentra el archivo creado por el Save
+        JsonUtility.FromJsonOverwrite(json, _moneyFactory); // Sobrescribe los datos guardados
+    }
+}
