@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishGoal : MonoBehaviour
+public class MidGoal : MonoBehaviour
 {
     // Start is called before the first frame update
     
@@ -18,9 +18,9 @@ public class FinishGoal : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Player" && GameManager.Instance.midGoal == null)
+        if(other.gameObject.tag == "Player" && GameManager.Instance.cardsInLevel == 0)
         {
-            Debug.Log("FinishLevel");
+            Debug.Log("Escape");
             Destroy(this.gameObject);
         }
     }

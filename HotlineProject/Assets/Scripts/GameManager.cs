@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public static GameManager Instance { get; private set; }
     private Player player;
-    [SerializeField] private GameObject finishGoal, goalPointer;
+    [SerializeField] public GameObject midGoal, goalPointer, finishGoal;
     [SerializeField] private Vector3 StartPosition;
     [SerializeField] public int cardsInLevel, tokensInLevel;
     void Awake()
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
      void Start() {
         finishGoal.SetActive(false);
+        midGoal.SetActive(false);
         goalPointer.SetActive(false);
     }
 
@@ -33,8 +34,21 @@ public class GameManager : MonoBehaviour
     {
         if(cardsInLevel == 0)
         {
-            finishGoal.SetActive(true);
-            goalPointer.SetActive(true);
+            if(midGoal != null)
+            {
+                midGoal.SetActive(true);
+                goalPointer.SetActive(true);
+            }
+            else
+            {
+                if(finishGoal != null)
+                {
+                    finishGoal.SetActive(true);
+                    goalPointer.SetActive(false);
+                }
+                
+            }
+
         }
     }
 

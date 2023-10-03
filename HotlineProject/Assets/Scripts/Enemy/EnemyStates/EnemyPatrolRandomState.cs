@@ -37,7 +37,7 @@ public class EnemyPatrolRandomState : IState
             newPosition = NewPosition();
             //Debug.Log(newPosition);
         }
-        else if(newPosition.x < -49.5f || newPosition.x > 57.5f || newPosition.y < -28f || newPosition.y > 51f)
+        else if(newPosition.x < _enemy.infLimit.x || newPosition.x > _enemy.supLimit.x || newPosition.y < _enemy.infLimit.y || newPosition.y > _enemy.supLimit.y)
         {
             newPosition = NewPosition();
         }
