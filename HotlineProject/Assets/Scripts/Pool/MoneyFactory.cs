@@ -9,7 +9,7 @@ public class MoneyFactory : MonoBehaviour
     [SerializeField] Money _moneyPrefab;
     [SerializeField] int _initialAmount;
 
-    ObjectPool<Money> _moneyPool;
+    [SerializeField] private ObjectPool<Money> _moneyPool;
 
     void Awake()
     {

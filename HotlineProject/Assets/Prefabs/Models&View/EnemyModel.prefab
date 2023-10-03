@@ -112,11 +112,11 @@ MonoBehaviour:
   waypoints: []
   originPosition: {x: 0, y: 0, z: 0}
   currentWaypoint: 0
-  patrolMaxRadius: 14.62
-  patrolMinRadius: 8.88
+  patrolMaxRadius: 15
+  patrolMinRadius: 9
   fieldOfView: {fileID: 0}
-  _minViewRadius: 0
-  _maxViewRadius: 0
+  _minViewRadius: 10
+  _maxViewRadius: 20
   _viewAngle: 50
   objectLayer:
     serializedVersion: 2

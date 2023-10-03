@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     [Header ("Patrol")]
     public float timeToPatrol;
     public Vector3[] waypoints;
+    public Vector2 infLimit, supLimit;
     public Vector3 originPosition;
     public int currentWaypoint;
     public float patrolMaxRadius;
