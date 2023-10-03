@@ -94,7 +94,6 @@ public class Enemy : MonoBehaviour
 
     private void Update() {
         _FSM.Update();
-    
            
         fieldOfView.SetAimDirection(transform.forward);     //Funcion para q apunte a donde queremos(tiene q ser update)
         fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)

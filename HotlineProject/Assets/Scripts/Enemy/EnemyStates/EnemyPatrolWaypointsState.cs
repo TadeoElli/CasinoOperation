@@ -31,7 +31,7 @@ public class EnemyPatrolWaypointsState : IState
     {
 
         _enemy._view.Rotate(newPosition);
-        agent.SetDestination(new Vector3(newPosition.x, newPosition.y, _enemy.transform.position.z));
+        agent.SetDestination(new Vector3(newPosition.x, newPosition.y, 0));
         Quaternion rotTarget = Quaternion.LookRotation(newPosition - _enemy.transform.position);
         _enemy.transform.rotation = Quaternion.RotateTowards(_enemy.transform.rotation, rotTarget, _enemy.rotationSpeed * Time.deltaTime);
     }

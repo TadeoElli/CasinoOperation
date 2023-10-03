@@ -71,6 +71,6 @@ public class EnemyPatrolRandomState : IState
 
     private Vector3 NewPosition()
     {
-        return new Vector3(Random.Range(_enemy.transform.position.x - _enemy.patrolMaxRadius, _enemy.transform.position.x + _enemy.patrolMaxRadius), Random.Range(_enemy.transform.position.y - _enemy.patrolMaxRadius, _enemy.transform.position.y + _enemy.patrolMaxRadius), _enemy.transform.position.z);
+        return new Vector3(Random.Range(_enemy.transform.position.x - _enemy.patrolMaxRadius, _enemy.transform.position.x + _enemy.patrolMaxRadius), Random.Range(_enemy.transform.position.y - _enemy.patrolMaxRadius, _enemy.transform.position.y + _enemy.patrolMaxRadius), 0);
     }
 }

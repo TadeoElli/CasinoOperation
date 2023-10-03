@@ -38,9 +38,7 @@ public class EnemyIdleState : IState
     public void OnFixedUpdate()
     {
         if(_enemy.CheckEnemiesInRange())
-        {
-            Debug.Log("Cambio de estado2");
-        }
+            _fsm.ChangeState(EnemyStates.Attack);
     }
 
     public void OnExit()
