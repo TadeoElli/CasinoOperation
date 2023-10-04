@@ -10,13 +10,13 @@ public class JsonSaveSystem : MonoBehaviour
 
     public void Awake()
     {
-
         path = Application.persistentDataPath + "/SaveData.json"; // Lo guarda en una carpeta existente en android
+        Debug.Log(path);
     }
 
     private void SaveGame()
     {
-        string json = JsonUtility.ToJson(_DataSaved); //transforma esta clase de archivo a Json
+        string json = JsonUtility.ToJson(_DataSaved, true); //transforma esta clase de archivo a Json
         File.WriteAllText(path, json);
     }
 
@@ -24,18 +24,5 @@ public class JsonSaveSystem : MonoBehaviour
     {
         string json = File.ReadAllText(path); //Busca y Encuentra el archivo creado por el Save
         JsonUtility.FromJsonOverwrite(json, _DataSaved); // Sobrescribe los datos guardados
-    }
-
-    public void DeleteSavedData()
-    {
-        if (File.Exists(path))
-        {
-            File.Delete(path);
-            Debug.Log("Datos guardados eliminados.");
-        }
-        else
-        {
-            Debug.LogWarning("No se encontraron datos guardados para eliminar.");
-        }
     }
 }
