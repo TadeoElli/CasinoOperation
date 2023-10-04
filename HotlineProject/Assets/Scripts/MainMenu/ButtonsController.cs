@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonsController : Controller
 {
@@ -13,6 +14,7 @@ public class ButtonsController : Controller
     private bool objetoCustomiceActivo = false;
     private bool objetoInstrucciones = false;
     private bool objetostats = false;
+
     public override Vector3 GetInputs()
     {
         throw new System.NotImplementedException();
