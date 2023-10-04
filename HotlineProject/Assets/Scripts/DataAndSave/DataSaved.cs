@@ -6,5 +6,5 @@ using UnityEngine;
 public class DataSaved
 {
 
-    int PuntuacionTotal = 10;
+    [SerializeField] StaminaLevel staminaLevel;
 }
