@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataSaved : MonoBehaviour
+[SerializeField]
+public class DataSaved
 {
 
-    int PuntuacionTotal;
+    int PuntuacionTotal = 10;
 }
