@@ -7,8 +7,9 @@ public class EnemyView : MonoBehaviour
 
     [SerializeField] private Enemy _enemy;
     [SerializeField] private float rotationModifier, rotationSpeed;
+    private Animator animator;
     private void Awake() {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,5 +29,15 @@ public class EnemyView : MonoBehaviour
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+    }
+
+    public void PlayAnim()
+    {
+        animator.SetBool("IsMoving", true);
+    }
+
+    public void StopAnim()
+    {
+        animator.SetBool("IsMoving", false);
     }
 }

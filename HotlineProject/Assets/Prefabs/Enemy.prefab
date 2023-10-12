@@ -100,12 +100,37 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8670201119439820580, guid: 36b4dab152058e44e826c8d6a58938ed, type: 3}
   m_PrefabInstance: {fileID: 1997016713663065624}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7197994540655982910}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2aca9a5f7b60a94896b05b9302ac007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7197994540655982910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8670201119439820582, guid: 36b4dab152058e44e826c8d6a58938ed, type: 3}
+  m_PrefabInstance: {fileID: 1997016713663065624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &699944066
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7197994540655982910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6ba92ac3cabf50428c0745bdd8edb95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &7197994540655982911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8670201119439820583, guid: 36b4dab152058e44e826c8d6a58938ed, type: 3}
@@ -171,9 +196,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7197994540655982908}
     - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: infLimit.x
+      value: -13.64184
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: infLimit.y
+      value: -48.33561
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: supLimit.x
+      value: 27.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: supLimit.y
+      value: -1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
       propertyPath: fieldOfView
       value: 
       objectReference: {fileID: 8919369762376940792}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: timeToPatrol
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: _maxViewRadius
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: _minViewRadius
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: patrolMaxRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444901639693123819, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
+      propertyPath: patrolMinRadius
+      value: 7.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cdca163784ae847847198a6c9dbf73, type: 3}
 --- !u!114 &615891073494611230 stripped
@@ -205,11 +266,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212266683199801252, guid: ee903263d02bed9448caaa51d75cde2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.89
       objectReference: {fileID: 0}
     - target: {fileID: 212266683199801252, guid: ee903263d02bed9448caaa51d75cde2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 37.22
       objectReference: {fileID: 0}
     - target: {fileID: 212266683199801252, guid: ee903263d02bed9448caaa51d75cde2d, type: 3}
       propertyPath: m_LocalPosition.z
