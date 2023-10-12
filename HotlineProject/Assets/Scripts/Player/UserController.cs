@@ -32,6 +32,14 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
         {
             _model.Movement(targetPosition);      
             _view.Rotate(targetPosition);
+            if(!_model._player.agent.hasPath)
+            {
+                _view.StopAnim();
+            }
+            else
+            {
+                _view.PlayAnim();
+            }
         }
 
         private void MoneyAbility()

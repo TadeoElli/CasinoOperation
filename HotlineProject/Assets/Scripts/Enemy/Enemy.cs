@@ -104,6 +104,15 @@ public class Enemy : MonoBehaviour
         {
             _FSM.ChangeState(EnemyStates.Attack);
         }
+
+        if(!agent.hasPath)
+        {
+            _view.StopAnim();
+        }
+        else
+        {
+            _view.PlayAnim();
+        }
     }
     public void SearchNPC(Vector3 direction)
     {

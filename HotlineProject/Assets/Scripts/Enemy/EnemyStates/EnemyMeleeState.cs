@@ -23,6 +23,7 @@ public class EnemyMeleeState : IState
         //_enemy.enemyCollider.gameObject.SetActive(true);
         _enemy.fieldOfView.ChangeAlertMaterial();
         _enemy.isAlert = true;
+
     }
 
     public void OnUpdate()

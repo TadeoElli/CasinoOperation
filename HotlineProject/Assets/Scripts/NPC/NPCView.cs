@@ -9,8 +9,9 @@ public class NPCView : MonoBehaviour
     [SerializeField] private float rotationModifier, rotationSpeed;
     private Vector3 destination;
     private bool searching = false;
+    private Animator animator;
     private void Awake() {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,5 +38,15 @@ public class NPCView : MonoBehaviour
     {
         destination = target;
         searching = true;
+    }
+
+    public void PlayAnim()
+    {
+        animator.SetBool("IsMoving", true);
+    }
+
+    public void StopAnim()
+    {
+        animator.SetBool("IsMoving", false);
     }
 }

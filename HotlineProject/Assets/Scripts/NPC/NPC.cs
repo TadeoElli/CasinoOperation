@@ -102,6 +102,15 @@ public class NPC : MonoBehaviour
                 obstacle.enabled = true;
             }
         }
+
+        if(!agent.hasPath)
+        {
+            _view.StopAnim();
+        }
+        else
+        {
+            _view.PlayAnim();
+        }
     }
 
     public void SearchMoney(Vector3 direction)
@@ -118,11 +127,6 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void EnableNavMesh()
-    {
-        agent.enabled = !agent.enabled;
-        obstacle.enabled = !obstacle.enabled;
-    }
 
     private void OnDrawGizmos()
     {  

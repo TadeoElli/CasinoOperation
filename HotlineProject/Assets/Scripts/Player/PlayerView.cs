@@ -6,8 +6,9 @@ public class PlayerView : MonoBehaviour
 {
 
     [SerializeField] private Player _player;
+    private Animator animator;
     private void Awake() {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,5 +22,15 @@ public class PlayerView : MonoBehaviour
         float angleRad = Mathf.Atan2(target.y - this.transform.position.y, target.x - this.transform.position.x);
         float angleGrad = (180 / Mathf.PI) * angleRad + 90;
         this.transform.rotation = Quaternion.Euler(0,0, angleGrad);
+    }
+
+    public void PlayAnim()
+    {
+        animator.SetBool("IsMoving", true);
+    }
+
+    public void StopAnim()
+    {
+        animator.SetBool("IsMoving", false);
     }
 }
