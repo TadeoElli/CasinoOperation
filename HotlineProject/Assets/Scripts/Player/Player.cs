@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [Header("Ref")]
     public Rigidbody2D _myRb; 
     public NavMeshAgent agent;      
-    PlayerModel _model;
+    public PlayerModel _model;
     [SerializeField] private PlayerView _view;
     public UserController  _controller;
 

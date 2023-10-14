@@ -37,27 +37,22 @@ public class EnemySearchState : IState
 
     public void OnFixedUpdate()
     {
-        if(Vector2.Distance(_enemy.transform.position, newPosition) < 1)
+
+        if(timer > _enemy.timeToReturn)
         {
-            if(timer > _enemy.timeToReturn)
-            {
-                _fsm.ChangeState(EnemyStates.Idle);
-            }
-            else
-            {
-                if(_enemy.CheckEnemiesInRange())
-                    _fsm.ChangeState(EnemyStates.Attack);
-                else
-                {
-                    timer = timer + 1 * Time.deltaTime;
-                }
-            }
+            _fsm.ChangeState(EnemyStates.Idle);
         }
         else
         {
             if(_enemy.CheckEnemiesInRange())
                 _fsm.ChangeState(EnemyStates.Attack);
+            else
+            {
+                timer = timer + 1 * Time.deltaTime;
+            }
         }
+        
+
     }
 
     public void OnExit()
