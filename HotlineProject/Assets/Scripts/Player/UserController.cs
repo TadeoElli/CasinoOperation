@@ -22,10 +22,6 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
             {
                 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                MoneyAbility();
-            }
         }
 
         public void ListenFixedKeys()       //Paso la posicion para moverse y rotar
@@ -42,15 +38,5 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
             }
         }
 
-        private void MoneyAbility()
-        {
-            _model.ThrowMoney();
-            var newMoney = MoneyFactory.Instance.GetObject();
-
-            //Seteamos la posicion
-            newMoney.transform.position = _model._player.transform.position;
-            
-            
-        }
 
     }
