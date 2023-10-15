@@ -12,6 +12,7 @@ public class MoneySkill : MonoBehaviour
     private Image skillCooldown;
     [SerializeField] private bool hasToActivate = false;
     [SerializeField] private float cooldown;
+    [SerializeField] private Animator animator;
     private void Awake() {
         player = FindObjectOfType<Player>();
         skillCooldown = GetComponent<Image>();
@@ -55,5 +56,6 @@ public class MoneySkill : MonoBehaviour
         //Seteamos la posicion
         newMoney.transform.position = player.transform.position;
         skillCooldown.fillAmount = 0; 
+        animator.SetTrigger("Activate");
     }
 }
