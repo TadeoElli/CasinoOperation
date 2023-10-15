@@ -20872,86 +20872,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: isWorker
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: hasPatrol
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: waypoints.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: waypoints.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: waypoints.Array.data[0].y
-      value: -15.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: waypoints.Array.data[1].y
-      value: 6.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103513, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5039450916731658815, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6408917335689748883, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -26865,10 +26785,6 @@ PrefabInstance:
     - target: {fileID: 1291507460489121087, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
       propertyPath: m_Name
       value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698281141859103512, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
-      propertyPath: moneyRadius
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6408917335689748883, guid: 3c7caa1c375a334498f0bc8143693d52, type: 3}
       propertyPath: m_RootOrder
