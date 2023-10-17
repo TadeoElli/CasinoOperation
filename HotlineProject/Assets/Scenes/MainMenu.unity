@@ -5400,7 +5400,7 @@ MonoBehaviour:
   vidas: 0
   maxVidas: 3
   vidasText: {fileID: 1965512803}
-  nuevaEscena: 1
+  nuevaEscena: 2
 --- !u!1 &1950073181
 GameObject:
   m_ObjectHideFlags: 0

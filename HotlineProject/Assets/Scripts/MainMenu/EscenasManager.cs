@@ -22,9 +22,16 @@ public class EscenasManager : StaminaLevel
         }
     }
 
+    public void ReturnToMaimMenu()
+    {
+        string nombreEscena = nuevaEscena.ToString();
+        SceneManager.LoadScene(nombreEscena);
+    }
+
     public enum EscenasEnum
     {
         MainMenu,
+        LevelTutorial,
         Level1,
         Level2,
     }
