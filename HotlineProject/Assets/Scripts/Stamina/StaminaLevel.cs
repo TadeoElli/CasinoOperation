@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class StaminaLevel : MonoBehaviour
 {
     public int vidas = 0; // Cantidad inicial de vidas

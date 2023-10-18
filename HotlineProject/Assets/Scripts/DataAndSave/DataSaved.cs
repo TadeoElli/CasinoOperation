@@ -5,6 +5,5 @@ using UnityEngine;
 [SerializeField]
 public class DataSaved
 {
-
-    [SerializeField] StaminaLevel staminaLevel;
+    [SerializeField] StaminaLevel staminaLevel = new StaminaLevel();
 }
