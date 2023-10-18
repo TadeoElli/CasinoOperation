@@ -22,6 +22,12 @@ public class EscenasManager : StaminaLevel
         }
     }
 
+    public void StartTutorial()
+    {
+        string nombreEscena = nuevaEscena.ToString();
+        SceneManager.LoadScene(nombreEscena);
+    }
+
     public void ReturnToMaimMenu()
     {
         string nombreEscena = nuevaEscena.ToString();
