@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[System.Serializable]
 public class StaminaLevel : MonoBehaviour
 {
-    public int vidas = 0; // Cantidad inicial de vidas
-    public int maxVidas = 3; // Cantidad máxima de vidas permitidas
+    public int vidas; // Cantidad inicial de vidas
+    public int maxVidas = 3; // Cantidad mï¿½xima de vidas permitidas
     public Text vidasText; // Texto para mostrar las vidas en la interfaz
+    
 
-    private void Start()
-    {
-        ActualizarUI();
-    }
 
-    void ActualizarUI()
+
+    public void ActualizarUI()
     {
         vidasText.text = " " + vidas.ToString();
     }
@@ -24,6 +22,7 @@ public class StaminaLevel : MonoBehaviour
         if (vidas > 0)
         {
             vidas--;
+            GameManager.Instance.SaveData(vidas);
             ActualizarUI();
         }
     }
@@ -32,6 +31,7 @@ public class StaminaLevel : MonoBehaviour
         if (vidas < maxVidas)
         {
             vidas++;
+            GameManager.Instance.SaveData(vidas);
             ActualizarUI();
         }
     }

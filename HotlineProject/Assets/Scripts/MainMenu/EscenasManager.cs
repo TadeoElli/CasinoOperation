@@ -7,6 +7,7 @@ public class EscenasManager : StaminaLevel
 {
     public EscenasEnum nuevaEscena;
 
+
     public void StartLevel()
     {
         if(vidas >= 1)
