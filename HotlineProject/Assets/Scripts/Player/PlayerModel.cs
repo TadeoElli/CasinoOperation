@@ -8,7 +8,8 @@ public class PlayerModel        //Esta clase va a manejar el gameObject jugador 
     //public event Action<float> OnStartMoving = delegate { };      Para usar desp
 
     //References
-
+    private float timer;
+    public bool hasThrow = false;
     public Player _player;
     UnityEngine.AI.NavMeshAgent agent;
 
@@ -17,6 +18,17 @@ public class PlayerModel        //Esta clase va a manejar el gameObject jugador 
     {
         _player = _user;
         agent = _player.agent;
+    }
+    private void Update() {
+        if(timer > 2)
+        {
+            hasThrow = false;
+        }
+        else
+        {
+            timer = timer + 1 * Time.deltaTime;
+        }
+        
     }
 
     public void Movement(Vector3 target)      //Llamo al NavMeshAgent del jugador para indicarle la posicion hacia donde se tiene q mover
@@ -35,5 +47,7 @@ public class PlayerModel        //Esta clase va a manejar el gameObject jugador 
                     npc.SearchMoney(_player.transform.position);
                 }
         }
+        hasThrow = true;
+        timer = 0;
     }
 }
