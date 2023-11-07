@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     
 
 
-    [SerializeField] public GameObject midGoal, goalPointer, finishGoal;
+    [SerializeField] public GameObject midGoal, finishGoal;
     [SerializeField] private Vector3 StartPosition;
     [SerializeField] public int cardsInLevel, tokensInLevel;
     [SerializeField] private GameDataController datacontroller;
@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
      void Start() {
         finishGoal.SetActive(false);
         midGoal.SetActive(false);
-        goalPointer.SetActive(false);
 
     }
 
@@ -42,14 +41,12 @@ public class GameManager : MonoBehaviour
             if(midGoal != null)
             {
                 midGoal.SetActive(true);
-                goalPointer.SetActive(true);
             }
             else
             {
                 if(finishGoal != null)
                 {
                     finishGoal.SetActive(true);
-                    goalPointer.SetActive(false);
                 }
                 
             }

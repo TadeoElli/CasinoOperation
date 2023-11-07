@@ -6,7 +6,10 @@ public class ObjectivePointer : MonoBehaviour
 {
     // Start is called before the first frame update
     private Player _player;
-    [SerializeField] private GameObject objective;
+    private float minDistance;
+    private Transform target;
+    [SerializeField] private List<GameObject> cardObjective;
+    [SerializeField] private GameObject midGoal, finishGoal;
     [SerializeField] private float rotationModifier, rotationSpeed;
 
     private void Awake() {
@@ -14,21 +17,49 @@ public class ObjectivePointer : MonoBehaviour
     }
     void Start()
     {
-        
+        minDistance = 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(objective == null)
+        if(GameManager.Instance.cardsInLevel > 0)
         {
-            Destroy(this.gameObject);
+            
+            foreach (var objective in cardObjective)
+            {
+                if(objective != null)
+                {
+                    if(Vector3.Distance(_player.transform.position, objective.transform.position) < minDistance)
+                    {
+                        target = objective.transform;
+                    }
+                    this.transform.position = _player.transform.position;
+                    Rotate(target.position);
+                    minDistance = Vector3.Distance(_player.transform.position, target.position);
+                }
+                else
+                {
+                    cardObjective.Remove(objective);
+                    minDistance = 100f;
+                }
+            }
+            
         }
         else
         {
-            this.transform.position = _player.transform.position;
-            Rotate(objective.transform.position);
+            if(midGoal != null)
+            {
+                this.transform.position = _player.transform.position;
+                Rotate(midGoal.transform.position);
+            }
+            else
+            {
+                this.transform.position = _player.transform.position;
+                Rotate(finishGoal.transform.position);
+            }
         }
+        
         
     }
 
