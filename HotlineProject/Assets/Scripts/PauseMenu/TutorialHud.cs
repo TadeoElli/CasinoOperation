@@ -7,7 +7,7 @@ public class TutorialHud : MonoBehaviour
     [SerializeField] private GameObject[] allInstructions;
     [SerializeField] private int tutorialStage = 1;
 
-    [SerializeField] private GameObject card1, card2;
+    [SerializeField] private Card card1, card2;
     private Player player;
     private Enemy enemy;
 
