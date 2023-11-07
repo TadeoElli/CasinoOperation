@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public static GameManager Instance { get; private set; }
     private Player player;
+    
+
+
     [SerializeField] public GameObject midGoal, goalPointer, finishGoal;
     [SerializeField] private Vector3 StartPosition;
     [SerializeField] public int cardsInLevel, tokensInLevel;
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
         finishGoal.SetActive(false);
         midGoal.SetActive(false);
         goalPointer.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -49,8 +53,8 @@ public class GameManager : MonoBehaviour
                 }
                 
             }
-
         }
+        
     }
 
     public void SaveData(int i)
