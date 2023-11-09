@@ -4161,7 +4161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   midGoal: {fileID: 480744803}
-  goalPointer: {fileID: 0}
   finishGoal: {fileID: 2147432790}
   StartPosition: {x: -19.2, y: -6.9, z: 0}
   cardsInLevel: 3
