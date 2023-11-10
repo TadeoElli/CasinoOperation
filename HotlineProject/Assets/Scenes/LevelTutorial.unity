@@ -8562,7 +8562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   midGoal: {fileID: 91300259}
   finishGoal: {fileID: 1209689735}
-  StartPosition: {x: -19.2, y: -6.9, z: 0}
+  StartPosition: {x: -1.73, y: -22.660002, z: 0}
   cardsInLevel: 2
   tokensInLevel: 0
   datacontroller: {fileID: 0}
