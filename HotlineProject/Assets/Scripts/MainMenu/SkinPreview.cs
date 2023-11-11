@@ -8,6 +8,7 @@ public class SkinPreview : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Image bodyImage, headImage, leftArmImage, rightArmImage, lockImage;
+    [SerializeField] private Button rightButton, leftButton, lockButton;
     [SerializeField] private SkinManager skinManager;
 
     private void Awake() {
@@ -15,7 +16,9 @@ public class SkinPreview : MonoBehaviour
     }
     void Start()
     {
-        
+        rightButton.onClick.AddListener(skinManager.RigthSwitch);
+        leftButton.onClick.AddListener(skinManager.LeftSwitch);
+        lockButton.onClick.AddListener(skinManager.BuySkin);
     }
 
     // Update is called once per frame

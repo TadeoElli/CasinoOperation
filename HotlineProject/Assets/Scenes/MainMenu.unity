@@ -197,7 +197,7 @@ MonoBehaviour:
   save_file: 
   gameData:
     energy: 2
-  staminaLevel: {fileID: 1940374804}
+  staminaLevel: {fileID: 1448057718}
 --- !u!4 &25133218
 Transform:
   m_ObjectHideFlags: 0
@@ -2943,10 +2943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 3
-  maxVidas: 3
-  vidasText: {fileID: 1965512803}
   nuevaEscena: 3
+  staminaLevel: {fileID: 1448057718}
 --- !u!114 &925450403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3139,7 +3137,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1940374804}
+        - m_Target: {fileID: 1448057718}
           m_TargetAssemblyTypeName: StaminaLevel, Assembly-CSharp
           m_MethodName: RestablecerVida
           m_Mode: 1
@@ -3407,10 +3405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 0
-  maxVidas: 3
-  vidasText: {fileID: 0}
   nuevaEscena: 1
+  staminaLevel: {fileID: 0}
 --- !u!114 &995152167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4601,6 +4597,7 @@ GameObject:
   - component: {fileID: 1448057715}
   - component: {fileID: 1448057714}
   - component: {fileID: 1448057717}
+  - component: {fileID: 1448057718}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -4673,7 +4670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1940374804}
+      - m_Target: {fileID: 1448057718}
         m_TargetAssemblyTypeName: StaminaLevel, Assembly-CSharp
         m_MethodName: RecargarVida
         m_Mode: 1
@@ -4736,6 +4733,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &1448057718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448057712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6595e7f859472146a9a8dcb9d684279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidas: 0
+  maxVidas: 3
+  vidasText: {fileID: 1965512803}
 --- !u!1 &1456872407
 GameObject:
   m_ObjectHideFlags: 0
@@ -4795,6 +4807,9 @@ MonoBehaviour:
   leftArmImage: {fileID: 1641640882}
   rightArmImage: {fileID: 234224496}
   lockImage: {fileID: 1604287289}
+  rightButton: {fileID: 1307004661}
+  leftButton: {fileID: 2097978054}
+  lockButton: {fileID: 1604287291}
   skinManager: {fileID: 0}
 --- !u!1 &1573069103
 GameObject:
@@ -5996,10 +6011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 3
-  maxVidas: 3
-  vidasText: {fileID: 1965512803}
   nuevaEscena: 4
+  staminaLevel: {fileID: 1448057718}
 --- !u!114 &1797403870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6390,10 +6403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 0
-  maxVidas: 3
-  vidasText: {fileID: 1965512803}
   nuevaEscena: 2
+  staminaLevel: {fileID: 1448057718}
 --- !u!1 &1950073181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6685,10 +6696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 3
-  maxVidas: 3
-  vidasText: {fileID: 1965512803}
   nuevaEscena: 5
+  staminaLevel: {fileID: 1448057718}
 --- !u!114 &2014794557
 MonoBehaviour:
   m_ObjectHideFlags: 0

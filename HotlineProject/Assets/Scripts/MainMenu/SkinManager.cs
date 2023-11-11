@@ -11,6 +11,7 @@ public class SkinManager : MonoBehaviour
     public static SkinManager instance;
     [SerializeField] public Sprite[] bodySprite, headSprite, leftArmSprite, rightArmSprite;
     [SerializeField] public bool[] unlocked;
+    
     public int index, maxIndex;
 
     private void Awake() {
@@ -41,6 +42,8 @@ public class SkinManager : MonoBehaviour
     {
         index = 0;
         maxIndex = bodySprite.Length - 1;
+
+        
 
     }
 
