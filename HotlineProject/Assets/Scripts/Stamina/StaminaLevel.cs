@@ -35,4 +35,10 @@ public class StaminaLevel : MonoBehaviour
             ActualizarUI();
         }
     }
+    public void RestablecerVida()
+    {
+        vidas = 0;
+        GameManager.Instance.SaveData(vidas);
+        ActualizarUI();
+    }
 }

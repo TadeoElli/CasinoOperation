@@ -386,6 +386,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  skinManager: {fileID: 0}
+  bodyImage: {fileID: 8816970683424592803}
+  headImage: {fileID: 8816970682388071619}
+  leftArmImage: {fileID: 8816970683184257103}
+  rightArmImage: {fileID: 8816970682874613465}
 --- !u!95 &1572545468
 Animator:
   serializedVersion: 4

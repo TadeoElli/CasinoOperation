@@ -24,7 +24,7 @@ public class GameDataController : MonoBehaviour
         }
         else
         {
-            SaveData(0);
+            SaveData(3);
         }
     }
 

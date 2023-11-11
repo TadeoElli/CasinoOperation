@@ -6,9 +6,19 @@ public class PlayerView : MonoBehaviour
 {
 
     [SerializeField] private Player _player;
+    [SerializeField] private SkinManager skinManager;
+    [SerializeField] private SpriteRenderer bodyImage, headImage, leftArmImage, rightArmImage;
     private Animator animator;
     private void Awake() {
         animator = GetComponent<Animator>();
+        skinManager = FindObjectOfType<SkinManager>();
+    }
+
+    private void Start() {
+        bodyImage.sprite = skinManager.bodySprite[skinManager.index];
+        headImage.sprite = skinManager.headSprite[skinManager.index];
+        leftArmImage.sprite = skinManager.leftArmSprite[skinManager.index];
+        rightArmImage.sprite = skinManager.rightArmSprite[skinManager.index];
     }
 
     // Update is called once per frame

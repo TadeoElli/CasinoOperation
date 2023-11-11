@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     //[SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private LayerMask objectLayer;
 
+    
+
     [Header("Hability")]
     [SerializeField] public float moneyRadius;
     void Awake()
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         _model = new PlayerModel(this);     //Creo la clase playerModel y le mando esta clase como ref
         _controller = new UserController(_model, _view);       //Creo la clase UserController y le mando el model y el view
-
+        
         agent.updateUpAxis = false;     //No tocar
     }
     private void Start() {
