@@ -24212,6 +24212,7 @@ MonoBehaviour:
   StartPosition: {x: -19.2, y: -6.9, z: 0}
   cardsInLevel: 2
   tokensInLevel: 3
+  levelsCompleted: 0
   datacontroller: {fileID: 0}
 --- !u!4 &1713081974
 Transform:
@@ -28294,6 +28295,10 @@ PrefabInstance:
     - target: {fileID: 4196829561848885580, guid: db7a3673124f49f4a85b214c0f7aa060, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196829561848885583, guid: db7a3673124f49f4a85b214c0f7aa060, type: 3}
+      propertyPath: actualLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7a3673124f49f4a85b214c0f7aa060, type: 3}
