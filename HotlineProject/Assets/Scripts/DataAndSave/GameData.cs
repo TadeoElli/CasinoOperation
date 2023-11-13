@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameData
 {
     public int energy;
+    public int levelsCompleted;
 }

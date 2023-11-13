@@ -6,9 +6,9 @@ public class ObjectivePointer : MonoBehaviour
 {
     // Start is called before the first frame update
     private Player _player;
-    private float minDistance;
+    public float minDistance;
     private Transform target;
-    [SerializeField] private List<GameObject> cardObjective;
+    [SerializeField] public List<GameObject> cardObjective;
     [SerializeField] private GameObject midGoal, finishGoal;
     [SerializeField] private float rotationModifier, rotationSpeed;
 
@@ -35,14 +35,14 @@ public class ObjectivePointer : MonoBehaviour
                         target = objective.transform;
                     }
                     this.transform.position = _player.transform.position;
-                    Rotate(target.position);
                     minDistance = Vector3.Distance(_player.transform.position, target.position);
+                    Rotate(target.position);
                 }
-                else
-                {
-                    cardObjective.Remove(objective);
-                    minDistance = 100f;
-                }
+                //else
+                //{
+                    //cardObjective.Remove(objective);
+                    //minDistance = 200f;
+                //}
             }
             
         }

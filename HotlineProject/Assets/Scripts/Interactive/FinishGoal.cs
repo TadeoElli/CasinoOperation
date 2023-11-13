@@ -7,10 +7,12 @@ public class FinishGoal : MonoBehaviour
     // Start is called before the first frame update
     private EscenasManager sceneM;
     [SerializeField] private int actualLevel;
+    [SerializeField] private GameDataController datacontroller;
     
     void Start()
     {
         sceneM = GetComponent<EscenasManager>();
+        datacontroller = FindObjectOfType<GameDataController>();
     }
 
     // Update is called once per frame
@@ -25,11 +27,13 @@ public class FinishGoal : MonoBehaviour
             //Debug.Log("FinishLevel");
             if(actualLevel == 1)
             {
-                GameManager.Instance.levelsCompleted = actualLevel;
+                datacontroller.newLevelsCompleted = actualLevel;
+                datacontroller.SaveData();
             }
-            else if(GameManager.Instance.levelsCompleted < actualLevel)
+            else if(datacontroller.newLevelsCompleted < actualLevel)
             {
-                GameManager.Instance.levelsCompleted = actualLevel;
+                datacontroller.newLevelsCompleted = actualLevel;
+                datacontroller.SaveData();
             }
             sceneM.ReturnToMaimMenu();
             Destroy(this.gameObject);

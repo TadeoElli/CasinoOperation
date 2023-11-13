@@ -10,10 +10,13 @@ public class StaminaLevel : MonoBehaviour
     public int maxVidas = 3; // Cantidad m�xima de vidas permitidas
     public Text vidasText; // Texto para mostrar las vidas en la interfaz
     
+    [SerializeField] private GameDataController datacontroller;
 
 
-
-    public void ActualizarUI()
+    private void Start() {
+        datacontroller = FindObjectOfType<GameDataController>();
+    }
+    public void Update()
     {
         vidasText.text = " " + vidas.ToString();
     }
@@ -22,8 +25,9 @@ public class StaminaLevel : MonoBehaviour
         if (vidas > 0)
         {
             vidas--;
-            GameManager.Instance.SaveData(vidas);
-            ActualizarUI();
+            datacontroller.newEnergy = vidas;
+            datacontroller.SaveData();
+            //ActualizarUI();
         }
     }
     public void RecargarVida()
@@ -31,14 +35,16 @@ public class StaminaLevel : MonoBehaviour
         if (vidas < maxVidas)
         {
             vidas++;
-            GameManager.Instance.SaveData(vidas);
-            ActualizarUI();
+            datacontroller.newEnergy = vidas;
+            datacontroller.SaveData();
+            //ActualizarUI();
         }
     }
     public void RestablecerVida()
     {
-        vidas = 0;
-        GameManager.Instance.SaveData(vidas);
-        ActualizarUI();
+        datacontroller.newEnergy = 0;
+        datacontroller.newLevelsCompleted = 0;
+        datacontroller.SaveData();
+        //ActualizarUI();
     }
 }

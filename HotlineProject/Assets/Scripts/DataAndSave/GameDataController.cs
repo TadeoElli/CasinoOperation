@@ -7,13 +7,25 @@ using System.IO;
 public class GameDataController : MonoBehaviour
 {
     public string save_file;
-    private int newEnergy = 0;
+    public static GameDataController instance;
     public GameData gameData = new GameData();
     [SerializeField] private StaminaLevel staminaLevel;
+
+    [SerializeField] public int newEnergy, newLevelsCompleted;
     
 
 
     private void Awake() {
+
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
 
         save_file = Application.persistentDataPath + "/gameData.json";
         Debug.Log(save_file);
@@ -24,12 +36,13 @@ public class GameDataController : MonoBehaviour
         }
         else
         {
-            SaveData(3);
+            newEnergy = 3;
+            SaveData();
         }
     }
 
     private void Update() {
-        staminaLevel.ActualizarUI();
+        //staminaLevel.ActualizarUI();
     }
 
     public void LoadData()
@@ -38,6 +51,8 @@ public class GameDataController : MonoBehaviour
         {
             string content = File.ReadAllText(save_file);
             gameData = JsonUtility.FromJson<GameData>(content);
+            newEnergy = gameData.energy;
+            newLevelsCompleted = gameData.levelsCompleted;
             staminaLevel.vidas = gameData.energy;
             Debug.Log(" "+ gameData.energy);
         }
@@ -47,13 +62,14 @@ public class GameDataController : MonoBehaviour
         }
     }
 
-    public void SaveData(int i)
+    public void SaveData()
     {
         GameData newData = new GameData()
         {
-            energy = i
+            energy = newEnergy,
+            levelsCompleted = newLevelsCompleted
         };
-
+        staminaLevel.vidas = newData.energy;
         string dataJSON = JsonUtility.ToJson(newData);
 
         File.WriteAllText(save_file, dataJSON);

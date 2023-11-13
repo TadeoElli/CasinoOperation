@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Hay mas de un gameManager");
         }
         player = FindObjectOfType<Player>();
+        datacontroller = FindObjectOfType<GameDataController>();
     }
 
      void Start() {
@@ -55,7 +56,8 @@ public class GameManager : MonoBehaviour
     }
     public void SaveData(int i)
     {
-        datacontroller.SaveData(i);
+        datacontroller.newEnergy = i;
+        datacontroller.SaveData();
     }
     public void LoadData()
     {

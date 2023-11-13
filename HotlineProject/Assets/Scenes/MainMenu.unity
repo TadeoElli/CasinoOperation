@@ -197,7 +197,10 @@ MonoBehaviour:
   save_file: 
   gameData:
     energy: 2
+    levelsCompleted: 0
   staminaLevel: {fileID: 1448057718}
+  newEnergy: 0
+  newLevelsCompleted: 0
 --- !u!4 &25133218
 Transform:
   m_ObjectHideFlags: 0
@@ -211,7 +214,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70201508
 GameObject:
@@ -262,7 +265,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136187195
 GameObject:
@@ -2028,50 +2031,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598788136}
   m_CullTransparentMesh: 1
---- !u!1 &635801475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 635801477}
-  - component: {fileID: 635801476}
-  m_Layer: 0
-  m_Name: Json
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &635801476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635801475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62811b1c2150bd349a2d8b6538b6e42e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &635801477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635801475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 633.33264, y: 1183.5555, z: -10.749816}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &672375259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,7 +2633,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908285771
 GameObject:
@@ -2705,6 +2664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03e7a95c21156641a01bd0e50d870aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  save_file: 
+  gameData:
+    energy: 0
+    levelsCompleted: 0
+  staminaLevel: {fileID: 0}
+  newEnergy: 0
+  newLevelsCompleted: 0
 --- !u!4 &908285773
 Transform:
   m_ObjectHideFlags: 0
@@ -2718,7 +2684,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921516592
 GameObject:
@@ -2893,7 +2859,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 925450400}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 925450402}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &925450400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2962,19 +2940,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 925450402}
-          m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
-          m_MethodName: StartLevel
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &958690054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,6 +5861,15 @@ MonoBehaviour:
   - {fileID: 925450399}
   - {fileID: 1797403866}
   - {fileID: 2014794553}
+  - {fileID: 1573069105}
+  - {fileID: 1113839249}
+  - {fileID: 160650917}
+  - {fileID: 598788138}
+  - {fileID: 1857957950}
+  - {fileID: 535464502}
+  - {fileID: 965899136}
+  - {fileID: 1765056247}
+  datacontroller: {fileID: 0}
 --- !u!1 &1797403864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5979,7 +5954,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1797403867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1797403869}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1797403867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6048,19 +6035,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1797403869}
-          m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
-          m_MethodName: StartLevel
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1812281396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6342,7 +6317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1940374801}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1940374804}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1940374801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6397,19 +6384,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1940374804}
-          m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
-          m_MethodName: StartLevel
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &1940374804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6664,7 +6639,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2014794554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2014794556}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2014794554
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class JsonDeleteData : JsonSaveSystem
+public class JsonDeleteData : GameDataController
 {
     public void DeleteSaveData()
     {
         if (Directory.Exists(Application.persistentDataPath))
         {
             Directory.Delete(Application.persistentDataPath, true); // Elimina la carpeta y sus archivos
-            Debug.Log("Se eliminó la carpeta de datos.");
+            Debug.Log("Se eliminï¿½ la carpeta de datos.");
         }
     }
 }
