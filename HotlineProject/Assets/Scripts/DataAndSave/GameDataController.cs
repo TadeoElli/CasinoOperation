@@ -12,7 +12,7 @@ public class GameDataController : MonoBehaviour
     [SerializeField] private StaminaLevel staminaLevel;
 
     [SerializeField] public int newEnergy, newLevelsCompleted, newScoreTokens;
-    [SerializeField] public bool[] newTokens;
+    [SerializeField] public bool[] newTokens, newUnlockedSkins;
     
 
 
@@ -42,6 +42,17 @@ public class GameDataController : MonoBehaviour
             {
                 newTokens[i] = true;
             }
+            for (int i = 0; i < 14; i++)
+            {
+                if(i==0)
+                {
+                    newUnlockedSkins[i] = true;
+                }
+                else
+                {
+                    newUnlockedSkins[i] = false;
+                }
+            }
             SaveData();
         }
     }
@@ -60,6 +71,8 @@ public class GameDataController : MonoBehaviour
             newLevelsCompleted = gameData.levelsCompleted;
             newTokens = gameData.tokens;
             newScoreTokens = gameData.tokenScore;
+            newUnlockedSkins = gameData.unlockedSkins;
+
             staminaLevel.vidas = gameData.energy;
             Debug.Log(" "+ gameData.energy);
         }
@@ -76,7 +89,8 @@ public class GameDataController : MonoBehaviour
             energy = newEnergy,
             levelsCompleted = newLevelsCompleted,
             tokens = newTokens,
-            tokenScore = newScoreTokens
+            tokenScore = newScoreTokens,
+            unlockedSkins = newUnlockedSkins
         };
         staminaLevel.vidas = newData.energy;
         string dataJSON = JsonUtility.ToJson(newData);

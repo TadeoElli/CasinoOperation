@@ -9,4 +9,5 @@ public class GameData
     public int levelsCompleted;
     public int tokenScore;
     public bool[] tokens;
+    public bool[] unlockedSkins;
 }

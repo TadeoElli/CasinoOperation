@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject midGoal, finishGoal;
     [SerializeField] private Vector3 StartPosition;
-    [SerializeField] public int cardsInLevel, tokensInLevel, levelsCompleted;
+    [SerializeField] public int cardsInLevel, levelsCompleted;
     [SerializeField] private GameDataController datacontroller;
     void Awake()
     {
@@ -54,22 +54,10 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    public void SaveData(int i)
-    {
-        datacontroller.newEnergy = i;
-        datacontroller.SaveData();
-    }
-    public void LoadData()
-    {
-        datacontroller.LoadData();
-    }
+
     public void DecreaseCard()
     {
         cardsInLevel--; 
-    }
-    public void DecreaseToken()
-    {
-        tokensInLevel--; 
     }
     public void EndLevel()
     {

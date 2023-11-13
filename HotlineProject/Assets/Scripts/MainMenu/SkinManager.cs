@@ -10,10 +10,11 @@ public class SkinManager : MonoBehaviour
 
     public static SkinManager instance;
     [SerializeField] public Sprite[] bodySprite, headSprite, leftArmSprite, rightArmSprite;
-    [SerializeField] public bool[] unlocked;
     
     public int index, maxIndex;
 
+    [SerializeField] private GameDataController datacontroller;
+    
     private void Awake() {
 
         if(instance != null)
@@ -26,24 +27,14 @@ public class SkinManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        for (int i = 0; i < unlocked.Length; i++)
-        {
-            if(i==0)
-            {
-                unlocked[i] = true;
-            }
-            else
-            {
-                unlocked[i] = false;
-            }
-        }
+        
     }
     void Start()
     {
         index = 0;
         maxIndex = bodySprite.Length - 1;
 
-        
+        datacontroller = FindObjectOfType<GameDataController>();
 
     }
 
@@ -55,7 +46,13 @@ public class SkinManager : MonoBehaviour
 
     public void BuySkin()
     {
-        unlocked[index] = true;
+        if(datacontroller.newScoreTokens >= 2)
+        {
+            datacontroller.newScoreTokens = datacontroller.newScoreTokens - 2;
+            datacontroller.newUnlockedSkins[index] = true;
+            datacontroller.SaveData();
+        }
+        
     }
     public void RigthSwitch()
     {
@@ -78,6 +75,14 @@ public class SkinManager : MonoBehaviour
         else
         {
             index--;
+        }
+    }
+
+    public void SelectSkins()
+    {
+        if(!datacontroller.newUnlockedSkins[index])
+        {
+            index = 0;
         }
     }
 }

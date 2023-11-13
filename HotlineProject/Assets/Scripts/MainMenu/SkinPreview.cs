@@ -8,17 +8,21 @@ public class SkinPreview : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Image bodyImage, headImage, leftArmImage, rightArmImage, lockImage;
-    [SerializeField] private Button rightButton, leftButton, lockButton;
+    [SerializeField] private GameObject price;
+    [SerializeField] private Button rightButton, leftButton, lockButton, okButton;
     [SerializeField] private SkinManager skinManager;
+    [SerializeField] private GameDataController datacontroller;
 
     private void Awake() {
         skinManager = FindObjectOfType<SkinManager>();
     }
     void Start()
     {
+        datacontroller = FindObjectOfType<GameDataController>();
         rightButton.onClick.AddListener(skinManager.RigthSwitch);
         leftButton.onClick.AddListener(skinManager.LeftSwitch);
         lockButton.onClick.AddListener(skinManager.BuySkin);
+        okButton.onClick.AddListener(skinManager.SelectSkins);
     }
 
     // Update is called once per frame
@@ -29,13 +33,15 @@ public class SkinPreview : MonoBehaviour
         leftArmImage.sprite = skinManager.leftArmSprite[skinManager.index];
         rightArmImage.sprite = skinManager.rightArmSprite[skinManager.index];
 
-        if(!skinManager.unlocked[skinManager.index])
+        if(!datacontroller.newUnlockedSkins[skinManager.index])
         {
             lockImage.enabled = true;
+            price.SetActive(true);
         }
         else
         {
             lockImage.enabled = false;
+            price.SetActive(false);
         }
     }
 }

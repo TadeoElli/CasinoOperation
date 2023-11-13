@@ -24,7 +24,6 @@ public class Token : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player")
         {
-            GameManager.Instance.DecreaseToken();
             datacontroller.newTokens[tokenId] = false;
             datacontroller.newScoreTokens++;
             datacontroller.SaveData();

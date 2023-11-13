@@ -11,10 +11,12 @@ public class StaminaLevel : MonoBehaviour
     public Text vidasText, tokenText1, tokenText2; // Texto para mostrar las vidas en la interfaz
     
     [SerializeField] private GameDataController datacontroller;
+    [SerializeField] private SkinManager skinManager;
 
 
     private void Start() {
         datacontroller = FindObjectOfType<GameDataController>();
+        skinManager = FindObjectOfType<SkinManager>();
     }
     public void Update()
     {
@@ -50,6 +52,18 @@ public class StaminaLevel : MonoBehaviour
         {
             datacontroller.newTokens[i] = true;
         }
+        for (int i = 0; i < 14; i++)
+        {
+            if(i==0)
+            {
+                datacontroller.newUnlockedSkins[i] = true;
+            }
+            else
+            {
+                datacontroller.newUnlockedSkins[i] = false;
+            }
+        }
+        skinManager.index = 0;
         datacontroller.newScoreTokens = 0;
         datacontroller.SaveData();
         //ActualizarUI();
