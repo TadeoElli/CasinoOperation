@@ -5,9 +5,14 @@ using UnityEngine;
 public class Token : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private int tokenId;
+
+    [SerializeField] private GameDataController datacontroller;
     void Start()
     {
-        
+        datacontroller = FindObjectOfType<GameDataController>();
+        if(!datacontroller.newTokens[tokenId])
+            this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,6 +25,9 @@ public class Token : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             GameManager.Instance.DecreaseToken();
+            datacontroller.newTokens[tokenId] = false;
+            datacontroller.newScoreTokens++;
+            datacontroller.SaveData();
             Destroy(this.gameObject);
         }
     }
