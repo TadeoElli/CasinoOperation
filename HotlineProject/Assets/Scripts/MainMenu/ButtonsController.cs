@@ -8,11 +8,9 @@ public class ButtonsController : Controller
 {
     public GameObject objetoLevels;
     public GameObject objetoCustomice;
-    public GameObject objetoHowToPlay;
     public GameObject objetoStats;
     private bool objetoActivo = false;
     private bool objetoCustomiceActivo = false;
-    private bool objetoInstrucciones = false;
     private bool objetostats = false;
 
     public override Vector3 GetInputs()
@@ -28,9 +26,7 @@ public class ButtonsController : Controller
     public void XSelectLevels()
     {
         objetoActivo = false;
-        objetoInstrucciones = false;
         objetostats = false;
-        objetoHowToPlay.SetActive(objetoInstrucciones);
         objetoLevels.SetActive(objetoActivo);
         objetoStats.SetActive(objetostats);
     }
@@ -43,11 +39,6 @@ public class ButtonsController : Controller
     {
         objetoCustomiceActivo = true;
         objetoCustomice.SetActive(objetoCustomiceActivo);
-    }
-    public void HowToPlay()
-    {
-        objetoInstrucciones = true;
-        objetoHowToPlay.SetActive(objetoInstrucciones);
     }
     public void DeleteStats()
     {
