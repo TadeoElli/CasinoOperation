@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1598,7 +1598,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 401223358}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &401223358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1652,7 +1664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &468587877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3329,9 +3341,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 908285772}
-          m_TargetAssemblyTypeName: JsonDeleteData, Assembly-CSharp
-          m_MethodName: DeleteSaveData
+        - m_Target: {fileID: 1111146110}
+          m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
+          m_MethodName: XSelectLevels
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3341,9 +3353,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1111146110}
-          m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
-          m_MethodName: XSelectLevels
+        - m_Target: {fileID: 908285772}
+          m_TargetAssemblyTypeName: JsonDeleteData, Assembly-CSharp
+          m_MethodName: DeleteSaveData
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4666,7 +4678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
