@@ -28,11 +28,12 @@ public class GameManager : MonoBehaviour
         datacontroller = FindObjectOfType<GameDataController>();
     }
 
-     void Start() {
+    void Start() {
         finishGoal.SetActive(false);
         midGoal.SetActive(false);
 
     }
+   
 
     // Update is called once per frame
     void Update()
