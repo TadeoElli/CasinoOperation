@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -13,8 +14,11 @@ public class PauseMenu : MonoBehaviour
 
     //private bool _isPaused = false;
 
+    public SoundManager soundManager;
+
     private void Start()
     {
+
         _pauseCanvas.SetActive(false);
 
         _resumeButton.onClick.AddListener(ResumeGame);
@@ -23,7 +27,7 @@ public class PauseMenu : MonoBehaviour
 
         _returnButton.onClick.AddListener(ReturnToMenu);
 
-        Time.timeScale = 1f;
+       // Time.timeScale = 1f;
     }
 
     public void PauseGame()
@@ -32,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         _pauseCanvas.SetActive(true);
         Time.timeScale = 0f;
         _pauseButton.interactable = false;
+        
     }
 
     public void ResumeGame()
@@ -40,16 +45,32 @@ public class PauseMenu : MonoBehaviour
         _pauseCanvas.SetActive(false);
         Time.timeScale = 1f;
         _pauseButton.interactable = true;
+        soundManager.ReproducirSonido("poker_sound");
     }
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
+        soundManager.ReproducirSonido("poker_sound");
+        _pauseButton.interactable = true;
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Invoke("LoadRestartScene", 0.2f);
+    }
+    private void LoadRestartScene()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
     public void ReturnToMenu()
     {
         Time.timeScale = 1f;
+        soundManager.ReproducirSonido("poker_sound");
+
+        Invoke("LoadMainMenu", 0.2f);
+    }
+
+    private void LoadMainMenu()
+    {
         SceneManager.LoadScene("MainMenu");
     }
 

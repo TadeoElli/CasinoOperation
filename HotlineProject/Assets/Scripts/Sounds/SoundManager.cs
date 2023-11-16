@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     public Dictionary<string, AudioClip> soundDictionary;
+    internal object isPlaying;
 
     void Start()
     {
@@ -31,3 +32,4 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
+
