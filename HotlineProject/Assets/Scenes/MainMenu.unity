@@ -215,6 +215,7 @@ MonoBehaviour:
   cardsInLevel: 0
   levelsCompleted: 0
   datacontroller: {fileID: 25133217}
+  loseMenu: {fileID: 0}
 --- !u!4 &70201510
 Transform:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &137876907
 RectTransform:
   m_ObjectHideFlags: 0
@@ -388,7 +389,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 137876909}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1111146110}
+        m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
+        m_MethodName: UnmuteSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &137876909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &169742438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,7 +643,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 169742440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1111146110}
+        m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
+        m_MethodName: MuteSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &169742440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3871,6 +3896,8 @@ MonoBehaviour:
   objetoLevels: {fileID: 1776442489}
   objetoCustomice: {fileID: 1712851762}
   objetoStats: {fileID: 468587876}
+  SoundOnButtom: {fileID: 169742437}
+  SoundOffButtom: {fileID: 137876906}
 --- !u!1 &1113839247
 GameObject:
   m_ObjectHideFlags: 0
