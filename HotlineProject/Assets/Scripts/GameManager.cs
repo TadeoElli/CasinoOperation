@@ -30,11 +30,14 @@ public class GameManager : MonoBehaviour
         loseMenu = FindObjectOfType<LoseMenu>();
     }
 
-     void Start() {
-        finishGoal.SetActive(false);
-        midGoal.SetActive(false);
+    void Start() {
+        if(finishGoal != null)
+            finishGoal.SetActive(false);
+        if(midGoal != null)
+            midGoal.SetActive(false);
 
     }
+   
 
     // Update is called once per frame
     void Update()
