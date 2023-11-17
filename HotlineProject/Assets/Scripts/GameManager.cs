@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector3 StartPosition;
     [SerializeField] public int cardsInLevel, levelsCompleted;
     [SerializeField] private GameDataController datacontroller;
+    [SerializeField] private LoseMenu loseMenu;
     void Awake()
     {
         if(Instance == null)
@@ -26,11 +27,14 @@ public class GameManager : MonoBehaviour
         }
         player = FindObjectOfType<Player>();
         datacontroller = FindObjectOfType<GameDataController>();
+        loseMenu = FindObjectOfType<LoseMenu>();
     }
 
     void Start() {
-        finishGoal.SetActive(false);
-        midGoal.SetActive(false);
+        if(finishGoal != null)
+            finishGoal.SetActive(false);
+        if(midGoal != null)
+            midGoal.SetActive(false);
 
     }
    
@@ -62,7 +66,6 @@ public class GameManager : MonoBehaviour
     }
     public void EndLevel()
     {
-        player._controller.targetPosition = StartPosition;
-        player.transform.position = StartPosition;
+        loseMenu.PauseGame();
     }
 }
