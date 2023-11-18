@@ -13,11 +13,11 @@ public class NotificationsManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != this || Instance != null)
+        if(Instance != null)
         {
             Destroy(gameObject);
         }
-        else
+        else if(Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
