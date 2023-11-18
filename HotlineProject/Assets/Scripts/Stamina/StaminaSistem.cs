@@ -34,7 +34,7 @@ public class StaminaSistem : MonoBehaviour
         if(currentstamina < maxStamina)
         {
             timer = nexStaminatime - DateTime.Now;
-            id = NotificationsManager.Instance.DisplayNotification(titleNoti, textNoti, IconNoti, AddDuration(DateTime.Now, ((maxStamina - currentstamina + 1) * timeToRecharge) + 1 + (float)timer.TotalSeconds));
+            id = NotificationsManager.Instance.DisplayNotification(titleNoti, textNoti, IconNoti, AddDuration(DateTime.Now, ((maxStamina - currentstamina + 1) * timeToRecharge) + 1 + (float)timer.TotalMinutes));
         }
     }
 
