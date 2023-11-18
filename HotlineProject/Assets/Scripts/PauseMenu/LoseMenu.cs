@@ -6,7 +6,6 @@ using System.Collections;
 public class LoseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _loseCanvas;
-    [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _returnButton;
     [SerializeField] private Button _quitButton;
@@ -20,8 +19,6 @@ public class LoseMenu : MonoBehaviour
     {
 
         _loseCanvas.SetActive(false);
-
-        _resumeButton.onClick.AddListener(ResumeGame);
 
         _restartButton.onClick.AddListener(RestartGame);
 
