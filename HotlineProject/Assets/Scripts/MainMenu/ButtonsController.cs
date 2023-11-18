@@ -9,9 +9,15 @@ public class ButtonsController : Controller
     public GameObject objetoLevels;
     public GameObject objetoCustomice;
     public GameObject objetoStats;
+    public GameObject SoundOnButtom;
+    public GameObject SoundOffButtom;
     private bool objetoActivo = false;
     private bool objetoCustomiceActivo = false;
     private bool objetostats = false;
+    private bool _objetoOnSound = true;
+    private bool _objetoOffSound = false;
+
+    private bool isMuted = false;
 
     public override Vector3 GetInputs()
     {
@@ -44,5 +50,25 @@ public class ButtonsController : Controller
     {
         objetostats = true;
         objetoStats.SetActive(objetostats);
+    }
+
+    public void MuteSounds()
+    {
+        _objetoOnSound = false;
+        _objetoOffSound = true;
+        SoundOnButtom.SetActive(_objetoOnSound);
+        SoundOffButtom.SetActive(_objetoOffSound);
+        isMuted = true;
+        AudioListener.volume = 0f; // Establecer el volumen a 0 para mutear
+    }
+
+    public void UnmuteSounds()
+    {
+        _objetoOnSound = true;
+        _objetoOffSound = false;
+        SoundOnButtom.SetActive(_objetoOnSound);
+        SoundOffButtom.SetActive(_objetoOffSound);
+        isMuted = false;
+        AudioListener.volume = 1f; // Establecer el volumen a 1 para reanudar
     }
 }
