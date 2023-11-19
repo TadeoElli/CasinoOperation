@@ -9,7 +9,7 @@ public class SkinPreview : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Image bodyImage, headImage, leftArmImage, rightArmImage, lockImage;
     [SerializeField] private GameObject price;
-    [SerializeField] private Button rightButton, leftButton, lockButton, okButton;
+    [SerializeField] private Button buyButton, selectButton;
     [SerializeField] private SkinManager skinManager;
     [SerializeField] private GameDataController datacontroller;
 
@@ -19,10 +19,8 @@ public class SkinPreview : MonoBehaviour
     void Start()
     {
         datacontroller = FindObjectOfType<GameDataController>();
-        rightButton.onClick.AddListener(skinManager.RigthSwitch);
-        leftButton.onClick.AddListener(skinManager.LeftSwitch);
-        lockButton.onClick.AddListener(skinManager.BuySkin);
-        okButton.onClick.AddListener(skinManager.SelectSkins);
+        buyButton.onClick.AddListener(skinManager.BuySkin);
+        selectButton.onClick.AddListener(skinManager.SelectSkins);
     }
 
     // Update is called once per frame
