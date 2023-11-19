@@ -6,22 +6,22 @@ using UnityEngine.SceneManagement;
 public class EscenasManager : MonoBehaviour
 {
     public EscenasEnum nuevaEscena;
-    public StaminaLevel staminaLevel;
+    public StaminaSistem staminaSistem;
 
     private void Awake() {
-        staminaLevel = FindObjectOfType<StaminaLevel>();
+        staminaSistem = FindObjectOfType<StaminaSistem>();
     }
 
     public void StartLevel()
     {
-        if(staminaLevel.vidas >= 1)
+        if(staminaSistem.currentstamina >= 1)
         {
         string nombreEscena = nuevaEscena.ToString(); // Convierte el valor del enum a una cadena (string).
         SceneManager.LoadScene(nombreEscena);         // Llama a la escena por el nombre
-        staminaLevel.RestarVida();
+        //staminaSistem.RestarVida();
         }
 
-        else if(staminaLevel.vidas == 0)
+        else if(staminaSistem.currentstamina == 0)
         {
             Debug.Log("No tienes Vida");
         }

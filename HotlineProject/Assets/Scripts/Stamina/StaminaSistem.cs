@@ -10,7 +10,7 @@ public class StaminaSistem : MonoBehaviour
 
     [SerializeField] int maxStamina = 3;
     [SerializeField] float timeToRecharge = 10;
-    int currentstamina;
+    public int currentstamina;
 
     DateTime nexStaminatime;
     DateTime LastSaminatime;
@@ -24,10 +24,18 @@ public class StaminaSistem : MonoBehaviour
     [SerializeField] string titleNoti = "full stamina";
     [SerializeField] string textNoti = "Tenes la stamina a full";
     [SerializeField] IconSelect IconNoti = IconSelect.icon_reminder;
+
+
+    [SerializeField] private SkinManager skinManager;
+    [SerializeField] private GameDataController datacontroller;
     int id;
+
+
 
     private void Start()
     {
+        skinManager = FindObjectOfType<SkinManager>();
+        datacontroller = FindObjectOfType<GameDataController>();
         LoadData();
         StartCoroutine(RechargeStamina());
 
@@ -126,6 +134,7 @@ public class StaminaSistem : MonoBehaviour
             // jugar nivel
             currentstamina -= staminaToUse;
             UpdateStamina();
+            datacontroller.newEnergy = currentstamina;
 
             NotificationsManager.Instance.CancelNotification(id);
             id = NotificationsManager.Instance.DisplayNotification(titleNoti, textNoti, IconNoti, AddDuration(DateTime.Now, ((maxStamina - currentstamina + 1) * timeToRecharge) + 1 + (float)timer.TotalSeconds));
@@ -145,7 +154,7 @@ public class StaminaSistem : MonoBehaviour
 
     void SaveData()
     {
-
+        datacontroller.newEnergy = currentstamina;
         PlayerPrefs.SetInt(PlayerPrefsKey._currentstaminakey, currentstamina);
         PlayerPrefs.SetString(PlayerPrefsKey._nextstaminatimekey, nexStaminatime.ToString());
         PlayerPrefs.SetString(PlayerPrefsKey._laststaminatimekey, LastSaminatime.ToString());
@@ -185,5 +194,30 @@ public class StaminaSistem : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveData();
+    }
+
+    public void RestartStats()
+    {
+        datacontroller.newEnergy = 0;
+        datacontroller.newLevelsCompleted = 0;
+        for (int i = 0; i < 12; i++)
+        {
+            datacontroller.newTokens[i] = true;
+        }
+        for (int i = 0; i < 14; i++)
+        {
+            if(i==0)
+            {
+                datacontroller.newUnlockedSkins[i] = true;
+            }
+            else
+            {
+                datacontroller.newUnlockedSkins[i] = false;
+            }
+        }
+        skinManager.index = 0;
+        datacontroller.newScoreTokens = 0;
+        datacontroller.SaveData();
+        //ActualizarUI();
     }
 }

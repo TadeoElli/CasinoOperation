@@ -154,7 +154,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1448057713}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -294,7 +294,7 @@ MonoBehaviour:
     tokenScore: 0
     tokens: 
     unlockedSkins: 
-  staminaLevel: {fileID: 1448057718}
+  staminaSistem: {fileID: 1545856575}
   newEnergy: 0
   newLevelsCompleted: 0
   newScoreTokens: 0
@@ -2691,6 +2691,7 @@ GameObject:
   - component: {fileID: 854110809}
   - component: {fileID: 854110808}
   - component: {fileID: 854110807}
+  - component: {fileID: 854110810}
   m_Layer: 5
   m_Name: CashRect
   m_TagString: Untagged
@@ -2801,6 +2802,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854110805}
   m_CullTransparentMesh: 1
+--- !u!114 &854110810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854110805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6595e7f859472146a9a8dcb9d684279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tokenText1: {fileID: 1734959181}
+  tokenText2: {fileID: 980994792}
+  datacontroller: {fileID: 0}
 --- !u!1 &884604663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,7 +2960,7 @@ MonoBehaviour:
     tokenScore: 0
     tokens: 
     unlockedSkins: 
-  staminaLevel: {fileID: 0}
+  staminaSistem: {fileID: 0}
   newEnergy: 0
   newLevelsCompleted: 0
   newScoreTokens: 0
@@ -3137,6 +3153,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1545856575}
+        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
+        m_MethodName: UseStamina
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 925450402}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -3200,7 +3240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuevaEscena: 3
-  staminaLevel: {fileID: 1448057718}
+  staminaSistem: {fileID: 0}
 --- !u!114 &925450403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3393,9 +3433,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1448057718}
-          m_TargetAssemblyTypeName: StaminaLevel, Assembly-CSharp
-          m_MethodName: RestablecerVida
+        - m_Target: {fileID: 1545856575}
+          m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
+          m_MethodName: RestartStats
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3633,7 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuevaEscena: 1
-  staminaLevel: {fileID: 0}
+  staminaSistem: {fileID: 0}
 --- !u!114 &995152167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4712,7 +4752,6 @@ GameObject:
   - component: {fileID: 1448057715}
   - component: {fileID: 1448057714}
   - component: {fileID: 1448057717}
-  - component: {fileID: 1448057718}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -4732,7 +4771,6 @@ RectTransform:
   m_LocalScale: {x: 0.42912278, y: 2.109637, z: 2.0091784}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1965512802}
   - {fileID: 20926694}
   - {fileID: 1498454561}
   m_Father: {fileID: 544426573}
@@ -4799,18 +4837,6 @@ MonoBehaviour:
           m_StringArgument: poker_sound
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1448057718}
-        m_TargetAssemblyTypeName: StaminaLevel, Assembly-CSharp
-        m_MethodName: RecargarVida
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1448057715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4862,25 +4888,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
---- !u!114 &1448057718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448057712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6595e7f859472146a9a8dcb9d684279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidas: 0
-  maxVidas: 3
-  vidasText: {fileID: 1965512803}
-  tokenText1: {fileID: 1734959181}
-  tokenText2: {fileID: 980994792}
-  datacontroller: {fileID: 0}
-  skinManager: {fileID: 0}
 --- !u!1 &1456872407
 GameObject:
   m_ObjectHideFlags: 0
@@ -4980,7 +4987,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1448057713}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5114,12 +5121,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 3
-  timeToRecharge: 5
+  timeToRecharge: 1
+  currentstamina: 3
   staminatext: {fileID: 20926695}
   timertext: {fileID: 1498454562}
   titleNoti: full stamina
   textNoti: Tenes la stamina a full
   IconNoti: 0
+  skinManager: {fileID: 0}
+  datacontroller: {fileID: 0}
 --- !u!4 &1545856576
 Transform:
   m_ObjectHideFlags: 0
@@ -6223,9 +6233,6 @@ MonoBehaviour:
   - {fileID: 160650917}
   - {fileID: 598788138}
   - {fileID: 1857957950}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   datacontroller: {fileID: 0}
 --- !u!1 &1797403864
 GameObject:
@@ -6312,6 +6319,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1545856575}
+        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
+        m_MethodName: UseStamina
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1797403869}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -6375,7 +6406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuevaEscena: 4
-  staminaLevel: {fileID: 1448057718}
+  staminaSistem: {fileID: 0}
 --- !u!114 &1797403870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6779,7 +6810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuevaEscena: 2
-  staminaLevel: {fileID: 1448057718}
+  staminaSistem: {fileID: 0}
 --- !u!1 &1950073181
 GameObject:
   m_ObjectHideFlags: 0
@@ -6855,86 +6886,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950073181}
-  m_CullTransparentMesh: 1
---- !u!1 &1965512801
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1965512802}
-  - component: {fileID: 1965512804}
-  - component: {fileID: 1965512803}
-  m_Layer: 5
-  m_Name: 0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1965512802
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965512801}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5329404, y: 0.90028065, z: 2.0782}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1448057713}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 66.8, y: -4.1000004}
-  m_SizeDelta: {x: 308.9914, y: 43.67866}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1965512803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965512801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 79132f0ae48ab8544b0b5780064e6ae5, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 50
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 0
---- !u!222 &1965512804
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965512801}
   m_CullTransparentMesh: 1
 --- !u!1 &2004894191
 GameObject:
@@ -7143,6 +7094,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1545856575}
+        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
+        m_MethodName: UseStamina
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2014794556}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -7206,7 +7181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nuevaEscena: 5
-  staminaLevel: {fileID: 1448057718}
+  staminaSistem: {fileID: 0}
 --- !u!114 &2014794557
 MonoBehaviour:
   m_ObjectHideFlags: 0
