@@ -30,7 +30,24 @@ public class StaminaSistem : MonoBehaviour
     [SerializeField] private GameDataController datacontroller;
     int id;
 
+    private static StaminaSistem instance;
 
+    public static StaminaSistem Instance
+    {
+        get { return instance; }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -46,7 +63,7 @@ public class StaminaSistem : MonoBehaviour
         }
     }
 
-    IEnumerator RechargeStamina()
+     public IEnumerator RechargeStamina()
     {
         UpdateTimer();
         UpdateStamina();
@@ -102,7 +119,7 @@ public class StaminaSistem : MonoBehaviour
         recharging = false;
     }
 
-    private void UpdateTimer()
+    public void UpdateTimer()
     {
         if(currentstamina >= maxStamina)
         {
@@ -117,7 +134,7 @@ public class StaminaSistem : MonoBehaviour
         timertext.text = timer.Minutes.ToString("00") + ":" + timer.Seconds.ToString("00");
     }
 
-    private void UpdateStamina()
+    public void UpdateStamina()
     {
         staminatext.text = currentstamina + "/" + maxStamina;
     }
@@ -219,5 +236,13 @@ public class StaminaSistem : MonoBehaviour
         datacontroller.newScoreTokens = 0;
         datacontroller.SaveData();
         //ActualizarUI();
+    }
+
+    public void AdUpStamina()
+    {
+        if(currentstamina <= maxStamina)
+        {
+        currentstamina += 1;    
+        }
     }
 }
