@@ -240,9 +240,10 @@ public class StaminaSistem : MonoBehaviour
 
     public void AdUpStamina()
     {
-        if(currentstamina <= maxStamina)
+        if(currentstamina < maxStamina)
         {
-        currentstamina += 1;    
+            currentstamina += 1;
+            SaveData();
         }
     }
 }
