@@ -7,6 +7,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     [SerializeField] string GameID = "5479204";
     [SerializeField] string RewardedGameID = "Rewarded_Android";
 
+    private int originalStamina;
+
     void Start()
     {
         Advertisement.AddListener(this);
@@ -20,6 +22,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             return;
         }
 
+        originalStamina = StaminaSistem.Instance.currentstamina;
+
         Advertisement.Show(RewardedGameID);
     }
 
@@ -27,7 +31,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         // cuando el anuncio tira un error se ejecuta este metodo
     }
-
 
     public void OnUnityAdsDidStart(string placementId)
     {
@@ -47,14 +50,21 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             if(showResult == ShowResult.Finished)
             {
                 Debug.Log("El usuario vio todo el ad");
+                if (StaminaSistem.Instance != null)
+                {
+                    StaminaSistem.Instance.AdUpStamina();
+                    StaminaSistem.Instance.UpdateStamina();
+                    StaminaSistem.Instance.UpdateTimer();
+                }
             }
-            else if (showResult == ShowResult.Skipped)
+            else if (showResult == ShowResult.Skipped || showResult == ShowResult.Failed)
             {
-                Debug.Log("El usuario vio mitad de ad");
-            }
-            else if (showResult == ShowResult.Failed)
-            {
-                Debug.Log("El usuario no vio el ad");
+                if (StaminaSistem.Instance != null)
+                {                                       
+                    StaminaSistem.Instance.currentstamina = originalStamina; // Restaurar la stamina a su valor original al inicio del anuncio
+                    StaminaSistem.Instance.UpdateStamina(); // Actualiza la interfaz de usuario si es necesario
+                    Debug.Log("El usuario vio mitad de ad");
+                }
             }
         }
     }
