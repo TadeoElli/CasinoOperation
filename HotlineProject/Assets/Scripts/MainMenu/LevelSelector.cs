@@ -15,7 +15,7 @@ public class LevelSelector : MonoBehaviour
         datacontroller = FindObjectOfType<GameDataController>();
         staminaSistem = FindObjectOfType<StaminaSistem>();
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 1; i < 5; i++)
         {
             levelButtons[i].onClick.AddListener(staminaSistem.UseStamina);
         }
