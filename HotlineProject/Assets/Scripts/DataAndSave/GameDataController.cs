@@ -73,7 +73,7 @@ public class GameDataController : MonoBehaviour
             newScoreTokens = gameData.tokenScore;
             newUnlockedSkins = gameData.unlockedSkins;
 
-            staminaSistem.currentstamina = gameData.energy;
+            //staminaSistem.currentstamina = gameData.energy;
             Debug.Log(" "+ gameData.energy);
         }
         else
@@ -92,7 +92,7 @@ public class GameDataController : MonoBehaviour
             tokenScore = newScoreTokens,
             unlockedSkins = newUnlockedSkins
         };
-        staminaSistem.currentstamina = newData.energy;
+        //staminaSistem.currentstamina = newData.energy;
         string dataJSON = JsonUtility.ToJson(newData);
 
         File.WriteAllText(save_file, dataJSON);

@@ -9,11 +9,16 @@ public class LevelSelector : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Button[] levelButtons;
     [SerializeField] private GameDataController datacontroller;
+    [SerializeField] private StaminaSistem staminaSistem;
     void Start()
     {
         datacontroller = FindObjectOfType<GameDataController>();
+        staminaSistem = FindObjectOfType<StaminaSistem>();
 
-        
+        for (int i = 0; i < 4; i++)
+        {
+            levelButtons[i].onClick.AddListener(staminaSistem.UseStamina);
+        }
     }
 
     private void Update() {

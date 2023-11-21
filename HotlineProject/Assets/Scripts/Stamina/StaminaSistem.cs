@@ -145,12 +145,12 @@ public class StaminaSistem : MonoBehaviour
         return timetoadd.AddMinutes(timeToRecharge);
     }
 
-    public void UseStamina(int staminaToUse)
+    public void UseStamina()
     {
-        if(currentstamina - staminaToUse >= 0)
+        if(currentstamina - 1 >= 0)
         {
             // jugar nivel
-            currentstamina -= staminaToUse;
+            currentstamina -= 1;
             UpdateStamina();
             datacontroller.newEnergy = currentstamina;
 
