@@ -10,6 +10,8 @@ public class LoseMenu : MonoBehaviour
     [SerializeField] private Button _returnButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _pauseButton;
+    [SerializeField] private GameDataController datacontroller;
+    [SerializeField] private AdsManager adsManager;
 
     //private bool _isPaused = false;
 
@@ -23,6 +25,9 @@ public class LoseMenu : MonoBehaviour
         _restartButton.onClick.AddListener(RestartGame);
 
         _returnButton.onClick.AddListener(ReturnToMenu);
+
+        datacontroller = FindObjectOfType<GameDataController>();
+        adsManager = FindObjectOfType<AdsManager>();
 
        // Time.timeScale = 1f;
     }
@@ -47,12 +52,22 @@ public class LoseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
-        soundManager.ReproducirSonido("poker_sound");
-        _pauseButton.interactable = true;
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(StaminaSistem.Instance.currentstamina > 0)
+        {
+            StaminaSistem.Instance.currentstamina--;
+            StaminaSistem.Instance.SaveData();
+            Time.timeScale = 1f;
+            soundManager.ReproducirSonido("poker_sound");
+            _pauseButton.interactable = true;
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        Invoke("LoadRestartScene", 0.2f);
+            Invoke("LoadRestartScene", 0.2f);
+        }
+        else
+        {
+            adsManager.isInMenu = false;
+            adsManager.ShowAD();
+        }
     }
     private void LoadRestartScene()
     {

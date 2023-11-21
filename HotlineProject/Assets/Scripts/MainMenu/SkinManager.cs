@@ -12,9 +12,8 @@ public class SkinManager : MonoBehaviour
 
     [SerializeField] private GameDataController datacontroller;
 
-    private Vector2 touchStartPos;
-    private bool isSwiping = false;
-    private float swipeThreshold = 50f;
+    
+
 
     private void Awake()
     {
@@ -39,49 +38,9 @@ public class SkinManager : MonoBehaviour
 
     void Update()
     {
-        HandleSwipeInput();
+        
     }
 
-    void HandleSwipeInput()
-    {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    touchStartPos = touch.position;
-                    isSwiping = true;
-                    break;
-
-                case TouchPhase.Moved:
-                    if (isSwiping)
-                    {
-                        float swipeDelta = touch.position.x - touchStartPos.x;
-
-                        if (Mathf.Abs(swipeDelta) > swipeThreshold)
-                        {
-                            if (swipeDelta > 0)
-                            {
-                                LeftSwitch();
-                            }
-                            else
-                            {
-                                RigthSwitch();
-                            }
-
-                            isSwiping = false;
-                        }
-                    }
-                    break;
-
-                case TouchPhase.Ended:
-                    isSwiping = false;
-                    break;
-            }
-        }
-    }
 
     public void BuySkin()
     {

@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseCanvas;
     [SerializeField] private Button _resumeButton;
-    [SerializeField] private Button _restartButton;
     [SerializeField] private Button _returnButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _pauseButton;
@@ -23,7 +22,6 @@ public class PauseMenu : MonoBehaviour
 
         _resumeButton.onClick.AddListener(ResumeGame);
 
-        _restartButton.onClick.AddListener(RestartGame);
 
         _returnButton.onClick.AddListener(ReturnToMenu);
 
@@ -48,15 +46,7 @@ public class PauseMenu : MonoBehaviour
         soundManager.ReproducirSonido("poker_sound");
     }
 
-    public void RestartGame()
-    {
-        Time.timeScale = 1f;
-        soundManager.ReproducirSonido("poker_sound");
-        _pauseButton.interactable = true;
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        Invoke("LoadRestartScene", 0.2f);
-    }
     private void LoadRestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

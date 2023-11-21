@@ -17,8 +17,8 @@ public class StaminaSistem : MonoBehaviour
 
     bool recharging;
 
-    [SerializeField] TextMeshProUGUI staminatext = null;
-    [SerializeField] TextMeshProUGUI timertext = null;
+    [SerializeField] public TextMeshProUGUI staminatext = null;
+    [SerializeField] public TextMeshProUGUI timertext = null;
 
     TimeSpan timer;
     [SerializeField] string titleNoti = "full stamina";
@@ -47,6 +47,7 @@ public class StaminaSistem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -169,10 +170,10 @@ public class StaminaSistem : MonoBehaviour
         }
     }
 
-    void SaveData()
+    public void SaveData()
     {
         datacontroller.newEnergy = currentstamina;
-        PlayerPrefs.SetInt(PlayerPrefsKey._currentstaminakey, currentstamina);
+        //PlayerPrefs.SetInt(PlayerPrefsKey._currentstaminakey, currentstamina);
         PlayerPrefs.SetString(PlayerPrefsKey._nextstaminatimekey, nexStaminatime.ToString());
         PlayerPrefs.SetString(PlayerPrefsKey._laststaminatimekey, LastSaminatime.ToString());
 
@@ -182,7 +183,6 @@ public class StaminaSistem : MonoBehaviour
     void LoadData()
     {
         currentstamina = PlayerPrefs.GetInt(PlayerPrefsKey._currentstaminakey, maxStamina);
-
 
         nexStaminatime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefsKey._nextstaminatimekey));
         LastSaminatime = StringToDateTime(PlayerPrefs.GetString(PlayerPrefsKey._laststaminatimekey));
@@ -243,6 +243,8 @@ public class StaminaSistem : MonoBehaviour
         if(currentstamina < maxStamina)
         {
             currentstamina += 1;
+            UpdateStamina();
+            UpdateTimer();
             SaveData();
         }
     }

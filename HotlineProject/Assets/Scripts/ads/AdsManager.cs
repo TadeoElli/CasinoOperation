@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Advertisements;
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
     [SerializeField] string GameID = "5479204";
     [SerializeField] string RewardedGameID = "Rewarded_Android";
 
+    [SerializeField] private StaminaSistem staminaSistem;
+
     private int originalStamina;
+    public bool isInMenu = true;
 
     void Start()
     {
+        staminaSistem = FindObjectOfType<StaminaSistem>();
         Advertisement.AddListener(this);
         Advertisement.Initialize(GameID);
+        isInMenu = true;
     }
 
     public void ShowAD()
@@ -21,8 +27,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         {
             return;
         }
-
-        originalStamina = StaminaSistem.Instance.currentstamina;
+        if(isInMenu)
+            originalStamina = staminaSistem.currentstamina;
 
         Advertisement.Show(RewardedGameID);
     }
@@ -50,22 +56,31 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             if(showResult == ShowResult.Finished)
             {
                 Debug.Log("El usuario vio todo el ad");
-                if (StaminaSistem.Instance != null)
+                if (staminaSistem != null && isInMenu)
                 {
-                    StaminaSistem.Instance.AdUpStamina();
-                    StaminaSistem.Instance.UpdateStamina();
-                    StaminaSistem.Instance.UpdateTimer();
+                    staminaSistem.AdUpStamina();
+                    staminaSistem.UpdateStamina();
+                    staminaSistem.UpdateTimer();
+                }
+                else if(staminaSistem != null && !isInMenu)
+                {
+                    Time.timeScale = 1f;
+                    Invoke("LoadRestartScene", 0.2f);
                 }
             }
             else if (showResult == ShowResult.Skipped || showResult == ShowResult.Failed)
             {
-                if (StaminaSistem.Instance != null)
+                if (staminaSistem != null)
                 {                                       
-                    StaminaSistem.Instance.currentstamina = originalStamina; // Restaurar la stamina a su valor original al inicio del anuncio
-                    StaminaSistem.Instance.UpdateStamina(); // Actualiza la interfaz de usuario si es necesario
+                    staminaSistem.currentstamina = originalStamina; // Restaurar la stamina a su valor original al inicio del anuncio
+                    staminaSistem.UpdateStamina(); // Actualiza la interfaz de usuario si es necesario
                     Debug.Log("El usuario vio mitad de ad");
                 }
             }
         }
+    }
+    private void LoadRestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
