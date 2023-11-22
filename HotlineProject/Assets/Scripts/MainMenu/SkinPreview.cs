@@ -35,6 +35,7 @@ public class SkinPreview : MonoBehaviour
         leftArmImage.sprite = skinManager.leftArmSprite[skinManager.index];
         rightArmImage.sprite = skinManager.rightArmSprite[skinManager.index];
 
+        HandleSwipeInput();
         if(!datacontroller.newUnlockedSkins[skinManager.index])
         {
             lockImage.enabled = true;
@@ -46,7 +47,6 @@ public class SkinPreview : MonoBehaviour
             price.SetActive(false);
         }
 
-        HandleSwipeInput();
     }
 
 
