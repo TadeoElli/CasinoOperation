@@ -22,6 +22,7 @@ public class EnemySearchState : IState
     }
     public void OnEnter()
     {
+        newPosition = newPosition + new Vector3(Random.Range(-5,5),Random.Range(-5,5),0);
         newPosition = _enemy.newPosition;
         timer = 0f;
         _enemy.fieldOfView.ChangeSearchMaterial();
