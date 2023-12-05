@@ -8,7 +8,7 @@ public class SecCamera : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private float rotationModifier, rotationSpeed;
     public Vector3[] destination;
-
+    public bool isActive = true;
     private float timer, skillTimer;
     private int index;
     [SerializeField] private Animator animator;
@@ -26,55 +26,69 @@ public class SecCamera : MonoBehaviour
         index = 0;
         timer = 0f;
         skillTimer = 40f;
+        isActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        fieldOfView.SetAimDirection(-transform.up);     //Funcion para q apunte a donde queremos(tiene q ser update)
-        fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
-        if(timer > 20f)
+        if(isActive)
         {
-            if( index == destination.Length - 1)
+            fieldOfView.SetAimDirection(-transform.up);     //Funcion para q apunte a donde queremos(tiene q ser update)
+            fieldOfView.SetOrigin(transform.position);      //Funcion para q empieze desde donde estamos(tiene q ser update)
+            if(timer > 20f)
             {
-                index = 0;
+                if( index == destination.Length - 1)
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index++;
+                }
+                timer = 0;
             }
-            else
-            {
-                index++;
-            }
-            timer = 0;
+            timer = timer + 1 * Time.deltaTime;
+            Vector3 vectorToTarget = destination[index] - transform.position;
+            vectorToTarget.z = 0f;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
         }
-        timer = timer + 1 * Time.deltaTime;
-        Vector3 vectorToTarget = destination[index] - transform.position;
-        vectorToTarget.z = 0f;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
     }
 
     private void FixedUpdate() {
-        if (CheckEnemiesInRange())
+        if(isActive)
         {
-            if(skillTimer > 40f)
+            if (CheckEnemiesInRange())
             {
-                animator.SetTrigger("Activate");
-                Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _maxViewRadius);       //Agarra colliders dentro del radio
+                if(skillTimer > 40f)
+                {
+                    animator.SetTrigger("Activate");
+                    Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _maxViewRadius);       //Agarra colliders dentro del radio
 
-                    foreach (Collider2D hitCollider in colliderArray)   
-                    {
-                        if(hitCollider.TryGetComponent<Enemy>(out Enemy enemy)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
-                                enemy.SearchNPC(playerPos);
-                            }
-                    }
-                skillTimer = 0f;
+                        foreach (Collider2D hitCollider in colliderArray)   
+                        {
+                            if(hitCollider.TryGetComponent<Enemy>(out Enemy enemy)){   //Si ese collider pertenece a un objeto con la clase enemigo(se puede cambiar desp es un ej)
+                                    enemy.SearchNPC(playerPos);
+                                }
+                        }
+                    skillTimer = 0f;
+                }
             }
+            skillTimer = skillTimer + 1 * Time.deltaTime;
         }
-        skillTimer = skillTimer + 1 * Time.deltaTime;
     }
 
+    public void DesactivateFeedback()
+    {
+        fieldOfView.ChangeDesactivatedMaterial();
+    }
 
+    public void ActivateFeedback()
+    {
+        fieldOfView.RestoreMaterial();
+    }
     public bool CheckEnemiesInRange()      //chequea que haya un enemigo en rango para que ataque automaticamente a melee
     {
         Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, _minViewRadius);       //Agarra colliders dentro del radio

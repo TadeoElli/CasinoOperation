@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alertMaterial: {fileID: 2100000, guid: 367b979333ef48744be9e2e80ffff14f, type: 2}
   searchMaterial: {fileID: 2100000, guid: fd8c396e6139ab1489a2d2e8e96ef9d6, type: 2}
+  desactivatedMaterial: {fileID: 2100000, guid: 883d58a091c5c92409d52f4542f8e446, type: 2}
 --- !u!33 &212266683199801274
 MeshFilter:
   m_ObjectHideFlags: 0

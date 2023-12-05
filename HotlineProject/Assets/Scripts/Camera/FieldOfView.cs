@@ -8,7 +8,7 @@ public class FieldOfView : MonoBehaviour
     private Mesh mesh;
     private Renderer render;
     private Material originMaterial;
-    [SerializeField] private Material alertMaterial, searchMaterial;
+    [SerializeField] private Material alertMaterial, searchMaterial, desactivatedMaterial;
     private float fov, viewDistance;
     Vector3 origin;
     float startingAngle;
@@ -99,6 +99,10 @@ public class FieldOfView : MonoBehaviour
     public void ChangeSearchMaterial()
     {
         render.material = searchMaterial;
+    }
+    public void ChangeDesactivatedMaterial()
+    {
+        render.material = desactivatedMaterial;
     }
     public void RestoreMaterial()
     {
