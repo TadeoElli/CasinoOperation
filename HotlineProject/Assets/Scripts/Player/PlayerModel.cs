@@ -31,9 +31,15 @@ public class PlayerModel        //Esta clase va a manejar el gameObject jugador 
         
     }
 
-    public void Movement(Vector3 target)      //Llamo al NavMeshAgent del jugador para indicarle la posicion hacia donde se tiene q mover
+    public void MovementNavMesh(Vector3 target)      //Llamo al NavMeshAgent del jugador para indicarle la posicion hacia donde se tiene q mover
     {
         agent.SetDestination(new Vector3(target.x, target.y, _player.transform.position.z));
+        _player.transform.forward = new Vector3(target.x - _player.transform.position.x, target.y - _player.transform.position.y, _player.transform.position.z);
+    }
+
+    public void MovementJoystick(Vector3 target)
+    {
+        _player.transform.position += target * agent.speed * Time.deltaTime;
         _player.transform.forward = new Vector3(target.x - _player.transform.position.x, target.y - _player.transform.position.y, _player.transform.position.z);
     }
 
