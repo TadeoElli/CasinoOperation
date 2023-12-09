@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class JoystickController : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     Vector3 _moveDir, _initialPos;
+    [SerializeField] private GameObject baseImage;
     [SerializeField] float maxMagnitude = 100;
     GameDataController _dataController;
 
@@ -16,6 +17,7 @@ public class JoystickController : MonoBehaviour, IDragHandler, IEndDragHandler
         if(_dataController.navMesh)
         {
             this.gameObject.SetActive(false);
+            baseImage.SetActive(false);
         }
     }
     

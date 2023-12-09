@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     //[SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private LayerMask objectLayer;
-    [SerializeField] private GameDataController gameDataController;
+    [SerializeField] public GameDataController gameDataController;
     [SerializeField] private JoystickController joystickController;
 
     

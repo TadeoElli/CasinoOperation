@@ -42,8 +42,12 @@ public class MoneySkill : MonoBehaviour
                 }
                 else
                 {
-                    hasToActivate = true;
+                    if(player.gameDataController.navMesh)
+                    {
+                        hasToActivate = true;
+                    }
                 }
+                
             }
         }
     }

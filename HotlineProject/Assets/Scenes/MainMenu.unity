@@ -290,13 +290,13 @@ MonoBehaviour:
   save_file: 
   gameData:
     energy: 2
-    levelsCompleted: 2
+    levelsCompleted: 6
     tokenScore: 0
     tokens: 
     unlockedSkins: 
   staminaSistem: {fileID: 1545856575}
   newEnergy: 0
-  newLevelsCompleted: 0
+  newLevelsCompleted: 6
   newScoreTokens: 0
   newTokens: 000000000000000000000000
   newUnlockedSkins: 0000000000000000000000000000
@@ -3182,18 +3182,6 @@ MonoBehaviour:
           m_StringArgument: ok_sound
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1545856575}
-        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
-        m_MethodName: UseStamina
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 925450402}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -4194,6 +4182,7 @@ GameObject:
   - component: {fileID: 1113839251}
   - component: {fileID: 1113839250}
   - component: {fileID: 1113839249}
+  - component: {fileID: 1113839252}
   m_Layer: 5
   m_Name: Level 6
   m_TagString: Untagged
@@ -4264,7 +4253,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1113839250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1113839252}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1113839250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4303,6 +4316,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113839247}
   m_CullTransparentMesh: 1
+--- !u!114 &1113839252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113839247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nuevaEscena: 7
+  staminaSistem: {fileID: 0}
 --- !u!1 &1236962968
 GameObject:
   m_ObjectHideFlags: 0
@@ -5469,18 +5496,6 @@ MonoBehaviour:
           m_StringArgument: ok_sound
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1545856575}
-        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
-        m_MethodName: UseStamina
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1573069108}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -6394,6 +6409,7 @@ MonoBehaviour:
   - {fileID: 1857957950}
   datacontroller: {fileID: 0}
   staminaSistem: {fileID: 0}
+  totalLevels: 6
 --- !u!1 &1797403864
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,18 +6505,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: ok_sound
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1545856575}
-        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
-        m_MethodName: UseStamina
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1797403869}
@@ -6878,18 +6882,6 @@ MonoBehaviour:
           m_StringArgument: ok_sound
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1545856575}
-        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
-        m_MethodName: UseStamina
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1940374804}
         m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
         m_MethodName: StartLevel
@@ -7264,18 +7256,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: ok_sound
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1545856575}
-        m_TargetAssemblyTypeName: StaminaSistem, Assembly-CSharp
-        m_MethodName: UseStamina
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2014794556}
