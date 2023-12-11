@@ -5,14 +5,15 @@ using UnityEngine.EventSystems;
 
 public class JoystickController : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    Vector3 _moveDir, _initialPos;
-    [SerializeField] private GameObject baseImage;
+    Vector3 _moveDir;
+    public Vector3 _initialPos;
+    [SerializeField] public GameObject baseImage;
     [SerializeField] float maxMagnitude = 100;
     GameDataController _dataController;
 
     void Start()
     {
-        _initialPos = transform.position;
+        _initialPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _dataController = FindObjectOfType<GameDataController>();
         if(_dataController.navMesh)
         {
@@ -36,7 +37,9 @@ public class JoystickController : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = _initialPos;
+        //transform.position = _initialPos;
         _moveDir = Vector3.zero;
+        this.gameObject.SetActive(false);
+        baseImage.SetActive(false);
     }
 }

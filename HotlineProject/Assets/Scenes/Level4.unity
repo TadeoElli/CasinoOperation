@@ -22089,7 +22089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1762360625753644669, guid: 0daa90be23792eb4b86a91116a89db34, type: 3}
       propertyPath: moneyRadius
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1762360625753644670, guid: 0daa90be23792eb4b86a91116a89db34, type: 3}
       propertyPath: m_RootOrder

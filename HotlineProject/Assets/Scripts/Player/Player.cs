@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     //[SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private LayerMask objectLayer;
     [SerializeField] public GameDataController gameDataController;
-    [SerializeField] private JoystickController joystickController;
+    [SerializeField] private MovementJoystick movementJoystick;
 
     
 
@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         gameDataController = FindObjectOfType<GameDataController>();
-        joystickController = FindObjectOfType<JoystickController>();
+        movementJoystick = FindObjectOfType<MovementJoystick>();
         _model = new PlayerModel(this);     //Creo la clase playerModel y le mando esta clase como ref
-        _controller = new UserController(_model, _view, gameDataController, joystickController);       //Creo la clase UserController y le mando el model y el view
+        _controller = new UserController(_model, _view, gameDataController, movementJoystick);       //Creo la clase UserController y le mando el model y el view
         
         agent.updateUpAxis = false;     //No tocar
     }

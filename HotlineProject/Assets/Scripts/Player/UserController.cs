@@ -7,17 +7,17 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
         PlayerModel _model;
         PlayerView _view;
         GameDataController _dataController;
-        JoystickController _joystickController;
+        MovementJoystick _movementJoystick;
 
         public Vector3 targetPosition;
 
-        public UserController(PlayerModel model, PlayerView view, GameDataController dataController, JoystickController joystickController)
+        public UserController(PlayerModel model, PlayerView view, GameDataController dataController, MovementJoystick movementJoystick)
         {
             _model = model;
             _view = view;
             _dataController = dataController;
             targetPosition = _model._player.transform.position;
-            _joystickController = joystickController;
+            _movementJoystick = movementJoystick;
             
         }
 
@@ -33,9 +33,14 @@ public class UserController     //Esta clase va a manejar todos los inputs del j
             }
             else
             {
-                if(_joystickController != null)
+                if(_movementJoystick != null)
                 {
-                    targetPosition = _joystickController.GetMovementInput();
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        //_joystickController._initialPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        //targetPosition = _joystickController.GetMovementInput();
+                    }
+                    targetPosition = _movementJoystick.joystickVec;
                 }
             }
         }
