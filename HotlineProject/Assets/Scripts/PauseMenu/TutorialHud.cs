@@ -27,6 +27,7 @@ public class TutorialHud : MonoBehaviour
                 if(player.agent.hasPath)
                 {
                     tutorialStage = 2;
+                    StartCoroutine(PauseGameForSeconds(2f));
                 }
                 break;
             case 2:
@@ -36,6 +37,7 @@ public class TutorialHud : MonoBehaviour
                 if((Vector3.Distance(player.transform.position,card1.transform.position) < 10 || (Vector3.Distance(player.transform.position,card2.transform.position) < 10)))
                 {
                     tutorialStage = 3;
+                    StartCoroutine(PauseGameForSeconds(2f));
                 }
                 break;
             case 3:
@@ -46,6 +48,7 @@ public class TutorialHud : MonoBehaviour
                 if(GameManager.Instance.cardsInLevel == 0)
                 {
                     tutorialStage = 4;
+                    StartCoroutine(PauseGameForSeconds(2f));
                 }
                 break;
             case 4:
@@ -55,6 +58,7 @@ public class TutorialHud : MonoBehaviour
                 if(GameManager.Instance.midGoal == null)
                 {
                     tutorialStage = 5;
+                    StartCoroutine(PauseGameForSeconds(2f));
                 }
                 break;
             case 5:
@@ -76,5 +80,18 @@ public class TutorialHud : MonoBehaviour
             allInstructions[7].SetActive(false);  // Use Skills
             allInstructions[8].SetActive(true);   // use skill complete
         }
+    }
+
+    System.Collections.IEnumerator PauseGameForSeconds(float duration)
+    {
+        Time.timeScale = 0f; // Pausar el tiempo
+
+        float pauseEndTime = Time.realtimeSinceStartup + duration;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return null;
+        }
+
+        Time.timeScale = 1f; // Reanudar el tiempo
     }
 }
