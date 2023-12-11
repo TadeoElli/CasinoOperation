@@ -89,11 +89,12 @@ MonoBehaviour:
   _view: {fileID: 0}
   _viewRadius: 5
   _viewAngle: 50
-  fieldOfView: {fileID: 0}
   objectLayer:
     serializedVersion: 2
     m_Bits: 64
-  moneyRadius: 11.48
+  gameDataController: {fileID: 0}
+  movementJoystick: {fileID: 0}
+  moneyRadius: 7
 --- !u!195 &1762360625753644668
 NavMeshAgent:
   m_ObjectHideFlags: 0

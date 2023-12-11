@@ -10,12 +10,14 @@ public class LevelSelector : MonoBehaviour
     [SerializeField] private Button[] levelButtons;
     [SerializeField] private GameDataController datacontroller;
     [SerializeField] private StaminaSistem staminaSistem;
+
+    [SerializeField] private int totalLevels;
     void Start()
     {
         datacontroller = FindObjectOfType<GameDataController>();
         staminaSistem = FindObjectOfType<StaminaSistem>();
 
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < totalLevels + 1 ; i++)
         {
             levelButtons[i].onClick.AddListener(staminaSistem.UseStamina);
         }

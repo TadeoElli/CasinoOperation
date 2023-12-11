@@ -13,6 +13,7 @@ public class GameDataController : MonoBehaviour
 
     [SerializeField] public int newEnergy, newLevelsCompleted, newScoreTokens;
     [SerializeField] public bool[] newTokens, newUnlockedSkins;
+    [SerializeField] public bool navMesh;
     
 
 
@@ -30,6 +31,7 @@ public class GameDataController : MonoBehaviour
 
         save_file = Application.persistentDataPath + "/gameData.json";
         Debug.Log(save_file);
+        navMesh = true;
         if(File.Exists(save_file))
         {
             LoadData();

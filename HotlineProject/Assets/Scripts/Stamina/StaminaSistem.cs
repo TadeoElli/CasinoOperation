@@ -147,7 +147,7 @@ public class StaminaSistem : MonoBehaviour
 
     public void UseStamina()
     {
-        if(currentstamina - 1 >= 0)
+        if(currentstamina  >= 1)
         {
             // jugar nivel
             currentstamina -= 1;

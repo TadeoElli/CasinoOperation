@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     //[SerializeField] private FieldOfView fieldOfView;
     [SerializeField] private LayerMask objectLayer;
+    [SerializeField] public GameDataController gameDataController;
+    [SerializeField] private MovementJoystick movementJoystick;
 
     
 
@@ -27,8 +29,10 @@ public class Player : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        gameDataController = FindObjectOfType<GameDataController>();
+        movementJoystick = FindObjectOfType<MovementJoystick>();
         _model = new PlayerModel(this);     //Creo la clase playerModel y le mando esta clase como ref
-        _controller = new UserController(_model, _view);       //Creo la clase UserController y le mando el model y el view
+        _controller = new UserController(_model, _view, gameDataController, movementJoystick);       //Creo la clase UserController y le mando el model y el view
         
         agent.updateUpAxis = false;     //No tocar
     }
