@@ -24,7 +24,7 @@ public class TutorialHud : MonoBehaviour
         {
             case 1:
                 allInstructions[0].SetActive(true); // TapToMove
-                if(player.agent.hasPath)
+                if(player.agent.hasPath || player.movementJoystick.joystickVec != Vector2.zero)
                 {
                     tutorialStage = 2;
                     StartCoroutine(PauseGameForSeconds(2f));

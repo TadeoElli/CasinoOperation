@@ -16511,6 +16511,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReproducirSonido
       objectReference: {fileID: 0}
+    - target: {fileID: 1646262893956722386, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1196367718}
     - target: {fileID: 1646262894012726832, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
