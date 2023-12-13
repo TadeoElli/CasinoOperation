@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public Dictionary<string, AudioClip> soundDictionary;
     internal object isPlaying;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -16,6 +17,13 @@ public class SoundManager : MonoBehaviour
         // Agrega sonidos al diccionario
         soundDictionary.Add("poker_sound", Resources.Load<AudioClip>("poker_sound"));
         soundDictionary.Add("ok_sound", Resources.Load<AudioClip>("ok_sound"));
+        soundDictionary.Add("AgarraLas2Cartas", Resources.Load<AudioClip>("AgarraLas2Cartas"));
+        soundDictionary.Add("BuscaLas2Cartas", Resources.Load<AudioClip>("BuscaLas2Cartas"));
+        soundDictionary.Add("Completado", Resources.Load<AudioClip>("Completado"));
+        soundDictionary.Add("Depositar", Resources.Load<AudioClip>("Depositar"));
+        soundDictionary.Add("Distraer", Resources.Load<AudioClip>("Distraer"));
+
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // reproduce un sonido por su nombre
@@ -23,7 +31,7 @@ public class SoundManager : MonoBehaviour
     {
         if (soundDictionary.ContainsKey(nombreSonido))
         {
-            AudioSource.PlayClipAtPoint(soundDictionary[nombreSonido], Camera.main.transform.position);
+            audioSource.PlayOneShot(soundDictionary[nombreSonido]);
             Debug.Log("se reprodujo el sonido");
         }
         else
