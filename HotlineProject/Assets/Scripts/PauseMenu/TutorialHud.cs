@@ -35,7 +35,7 @@ public class TutorialHud : MonoBehaviour
                 {
                     tutorialStage = 2;
                     StartCoroutine(PauseGameForSeconds(2f));
-                    soundManager.ReproducirSonido("BuscaLas2Cartas");
+                    soundManager.ReproducirSonido("Busca");
                 }
                 break;
             case 2:
@@ -46,7 +46,7 @@ public class TutorialHud : MonoBehaviour
                 {
                     tutorialStage = 3;
                     StartCoroutine(PauseGameForSeconds(2f));
-                    soundManager.ReproducirSonido("AgarraLas2Cartas");
+                    soundManager.ReproducirSonido("Agarra");
                 }
                 break;
             case 3:
@@ -57,7 +57,7 @@ public class TutorialHud : MonoBehaviour
                 if(GameManager.Instance.cardsInLevel == 0)
                 {
                     tutorialStage = 4;
-                    StartCoroutine(PauseGameForSeconds(2f));
+                    StartCoroutine(PauseGameForSeconds(6f));
                     soundManager.ReproducirSonido("Distraer");
                 }
                 break;
@@ -68,7 +68,7 @@ public class TutorialHud : MonoBehaviour
                 if(GameManager.Instance.midGoal == null)
                 {
                     tutorialStage = 5;
-                    StartCoroutine(PauseGameForSeconds(2f));
+                    StartCoroutine(PauseGameForSeconds(3f));
                     soundManager.ReproducirSonido("Completado");
                 }
                 break;
