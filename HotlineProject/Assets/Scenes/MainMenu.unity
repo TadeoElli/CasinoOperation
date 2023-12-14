@@ -4579,7 +4579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoLevels: {fileID: 1776442489}
-  objetoCustomize: {fileID: 1616553036}
+  objetoCustomize: {fileID: 1712851762}
   objetoStats: {fileID: 468587876}
   SoundOnButton: {fileID: 169742437}
   SoundOffButton: {fileID: 137876906}
