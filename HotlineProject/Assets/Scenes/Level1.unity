@@ -16467,50 +16467,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 490102257824038449, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     - target: {fileID: 490102258077412750, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 490102258077412750, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     - target: {fileID: 490102258235559793, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 490102258235559793, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262893204240417, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 65025631}
-    - target: {fileID: 1646262893204240417, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowAD
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262893615879583, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 793711348}
-    - target: {fileID: 1646262893615879583, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MuteSounds
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262893894586929, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 1646262893894586929, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262893956722386, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: soundManager
       value: 
@@ -16519,18 +16495,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 793711348}
-    - target: {fileID: 1646262894012726832, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnmuteSounds
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262894464862374, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 1646262894464862374, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     - target: {fileID: 1646262894851245026, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -16623,10 +16591,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1196367718}
-    - target: {fileID: 1646262895059666086, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReproducirSonido
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
 --- !u!1001 &535553380

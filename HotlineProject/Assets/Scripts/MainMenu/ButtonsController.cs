@@ -1,19 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonsController : Controller
 {
     public GameObject objetoLevels;
-    public GameObject objetoCustomice;
+    public GameObject objetoCustomize;
     public GameObject objetoStats;
-    public GameObject SoundOnButtom;
-    public GameObject SoundOffButtom;
-    private bool objetoActivo = false;
-    private bool objetoCustomiceActivo = false;
-    private bool objetostats = false;
-    private bool _objetoOnSound = true;
-    private bool _objetoOffSound = false;
+    public GameObject SoundOnButton;
+    public GameObject SoundOffButton;
+    public GameObject quitWarningCanvas;
+    public Button confirmQuitButton;
+    public Button cancelQuitButton;
 
-    private bool isMuted = false;
+    private bool objetoLevelsActive = false;
+    private bool objetoCustomizeActive = false;
+    private bool objetoStatsActive = false;
+    private bool isSoundOn = true;
+
+    private void Start()
+    {
+        quitWarningCanvas.SetActive(false);
+
+        confirmQuitButton.onClick.AddListener(ConfirmQuit);
+        cancelQuitButton.onClick.AddListener(CancelQuit);
+    }
 
     public override Vector3 GetInputs()
     {
@@ -22,54 +32,71 @@ public class ButtonsController : Controller
 
     public void SelectLevels()
     {
-        objetoActivo = true; // Cambia el estado del objeto
-        objetoLevels.SetActive(objetoActivo); // Activa o desactiva el GameObject
+        objetoLevelsActive = true;
+        objetoCustomizeActive = false;
+        objetoStatsActive = false;
+
+        objetoLevels.SetActive(objetoLevelsActive);
+        objetoCustomize.SetActive(objetoCustomizeActive);
+        objetoStats.SetActive(objetoStatsActive);
     }
+
     public void XSelectLevels()
     {
-        objetoActivo = false;
-        objetostats = false;
-        objetoLevels.SetActive(objetoActivo);
-        objetoStats.SetActive(objetostats);
+        objetoLevelsActive = false;
+        objetoStatsActive = false;
+
+        objetoLevels.SetActive(objetoLevelsActive);
+        objetoStats.SetActive(objetoStatsActive);
     }
-    public void OkButtom()
+
+    public void OkButton()
     {
-        objetoCustomiceActivo = false;
-        objetoCustomice.SetActive(objetoCustomiceActivo);
+        objetoCustomizeActive = false;
+        objetoCustomize.SetActive(objetoCustomizeActive);
     }
-    public void Customice()
+
+    public void Customize()
     {
-        objetoCustomiceActivo = true;
-        objetoCustomice.SetActive(objetoCustomiceActivo);
+        objetoCustomizeActive = true;
+        objetoCustomize.SetActive(objetoCustomizeActive);
     }
+
     public void DeleteStats()
     {
-        objetostats = true;
-        objetoStats.SetActive(objetostats);
+        objetoStatsActive = true;
+        objetoStats.SetActive(objetoStatsActive);
     }
 
     public void MuteSounds()
     {
-        _objetoOnSound = false;
-        _objetoOffSound = true;
-        SoundOnButtom.SetActive(_objetoOnSound);
-        SoundOffButtom.SetActive(_objetoOffSound);
-        isMuted = true;
-        AudioListener.volume = 0f; // Establecer el volumen a 0 para mutear
+        isSoundOn = false;
+        SoundOnButton.SetActive(isSoundOn);
+        SoundOffButton.SetActive(!isSoundOn);
+        AudioListener.volume = 0f;
     }
 
     public void UnmuteSounds()
     {
-        _objetoOnSound = true;
-        _objetoOffSound = false;
-        SoundOnButtom.SetActive(_objetoOnSound);
-        SoundOffButtom.SetActive(_objetoOffSound);
-        isMuted = false;
-        AudioListener.volume = 1f; // Establecer el volumen a 1 para reanudar
+        isSoundOn = true;
+        SoundOnButton.SetActive(isSoundOn);
+        SoundOffButton.SetActive(!isSoundOn);
+        AudioListener.volume = 1f;
     }
 
-    public void Warning()
+    public void WarningMainMenu()
     {
+        quitWarningCanvas.SetActive(true);
+    }
 
+    private void ConfirmQuit()
+    {
+        Application.Quit();
+        Debug.Log("Application.Quit();");
+    }
+
+    private void CancelQuit()
+    {
+        quitWarningCanvas.SetActive(false);
     }
 }

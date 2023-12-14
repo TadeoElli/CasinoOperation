@@ -51,13 +51,11 @@ public class PauseMenu : MonoBehaviour
     private void ShowReturnWarning()
     {
         _warningCanvas.SetActive(true);
-        // Puedes personalizar el mensaje de advertencia o cambiar la apariencia según tus necesidades.
     }
 
     private void ShowQuitWarning()
     {
         _warningCanvas.SetActive(true);
-        // Puedes personalizar el mensaje de advertencia o cambiar la apariencia según tus necesidades.
     }
 
     private void ConfirmAction()
