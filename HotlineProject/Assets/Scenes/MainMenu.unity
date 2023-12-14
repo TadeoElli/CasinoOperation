@@ -184,7 +184,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 5ecddcb3d9ea15643a50f7b19a13d1ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1972,7 +1972,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1111146110}
           m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
-          m_MethodName: OkButtom
+          m_MethodName: OkButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4579,10 +4579,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoLevels: {fileID: 1776442489}
-  objetoCustomize: {fileID: 0}
+  objetoCustomize: {fileID: 1616553036}
   objetoStats: {fileID: 468587876}
-  SoundOnButton: {fileID: 0}
-  SoundOffButton: {fileID: 0}
+  SoundOnButton: {fileID: 169742437}
+  SoundOffButton: {fileID: 137876906}
   quitWarningCanvas: {fileID: 639229587}
   confirmQuitButton: {fileID: 1338604871}
   cancelQuitButton: {fileID: 112754333}
@@ -5689,7 +5689,7 @@ MonoBehaviour:
   m_text: 00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 5ecddcb3d9ea15643a50f7b19a13d1ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6430,7 +6430,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1111146110}
           m_TargetAssemblyTypeName: ButtonsController, Assembly-CSharp
-          m_MethodName: Customice
+          m_MethodName: Customize
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
