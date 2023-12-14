@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ButtonsController : Controller
 {
@@ -70,5 +66,10 @@ public class ButtonsController : Controller
         SoundOffButtom.SetActive(_objetoOffSound);
         isMuted = false;
         AudioListener.volume = 1f; // Establecer el volumen a 1 para reanudar
+    }
+
+    public void Warning()
+    {
+
     }
 }
