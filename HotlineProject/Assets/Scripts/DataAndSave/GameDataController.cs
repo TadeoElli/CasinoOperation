@@ -101,5 +101,14 @@ public class GameDataController : MonoBehaviour
 
         Debug.Log("File Saved");
     }
+
+    public void SetJoystick()
+    {
+        navMesh = false;
+    }
+    public void SetNavMesh()
+    {
+        navMesh = true;
+    }
 }
 

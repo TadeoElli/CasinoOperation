@@ -9,12 +9,14 @@ public class ButtonsController : Controller
     public GameObject SoundOnButton;
     public GameObject SoundOffButton;
     public GameObject quitWarningCanvas;
+    public GameObject objetoControls;
     public Button confirmQuitButton;
     public Button cancelQuitButton;
 
     private bool objetoLevelsActive = false;
     private bool objetoCustomizeActive = false;
     private bool objetoStatsActive = false;
+    private bool objetoControlsActive = false;
     private bool isSoundOn = true;
 
     private void Start()
@@ -35,37 +37,51 @@ public class ButtonsController : Controller
         objetoLevelsActive = true;
         objetoCustomizeActive = false;
         objetoStatsActive = false;
+        objetoControlsActive = false;
 
         objetoLevels.SetActive(objetoLevelsActive);
         objetoCustomize.SetActive(objetoCustomizeActive);
         objetoStats.SetActive(objetoStatsActive);
+        objetoControls.SetActive(objetoControlsActive);
     }
 
-    public void XSelectLevels()
-    {
-        objetoLevelsActive = false;
-        objetoStatsActive = false;
-
-        objetoLevels.SetActive(objetoLevelsActive);
-        objetoStats.SetActive(objetoStatsActive);
-    }
 
     public void OkButton()
     {
+        objetoLevelsActive = false;
+        objetoStatsActive = false;
         objetoCustomizeActive = false;
+        objetoControlsActive = false;
+
+        objetoLevels.SetActive(objetoLevelsActive);
         objetoCustomize.SetActive(objetoCustomizeActive);
+        objetoStats.SetActive(objetoStatsActive);
+        objetoControls.SetActive(objetoControlsActive);
     }
 
     public void Customize()
     {
         objetoCustomizeActive = true;
-        objetoCustomize.SetActive(objetoCustomizeActive);
-    }
+        objetoLevelsActive = false;
+        objetoStatsActive = false;
+        objetoControlsActive = false;
 
-    public void DeleteStats()
-    {
-        objetoStatsActive = true;
+        objetoLevels.SetActive(objetoLevelsActive);
+        objetoCustomize.SetActive(objetoCustomizeActive);
         objetoStats.SetActive(objetoStatsActive);
+        objetoControls.SetActive(objetoControlsActive);
+    }
+    public void Controls()
+    {
+        objetoCustomizeActive = false;
+        objetoLevelsActive = false;
+        objetoStatsActive = false;
+        objetoControlsActive = true;
+        
+        objetoLevels.SetActive(objetoLevelsActive);
+        objetoCustomize.SetActive(objetoCustomizeActive);
+        objetoStats.SetActive(objetoStatsActive);
+        objetoControls.SetActive(objetoControlsActive);
     }
 
     public void MuteSounds()
