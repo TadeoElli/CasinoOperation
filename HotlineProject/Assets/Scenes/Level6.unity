@@ -2943,10 +2943,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetoLevels: {fileID: 0}
-  objetoCustomice: {fileID: 0}
+  objetoCustomize: {fileID: 0}
   objetoStats: {fileID: 0}
-  SoundOnButtom: {fileID: 1621587092}
-  SoundOffButtom: {fileID: 1621587091}
+  SoundOnButton: {fileID: 0}
+  SoundOffButton: {fileID: 0}
+  quitWarningCanvas: {fileID: 0}
+  objetoControls: {fileID: 0}
+  confirmQuitButton: {fileID: 0}
+  cancelQuitButton: {fileID: 0}
 --- !u!4 &288466394
 Transform:
   m_ObjectHideFlags: 0
@@ -3515,6 +3519,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7173714605428105973, guid: 00714b749a6c5534790d873ae4773822, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173714605428105973, guid: 00714b749a6c5534790d873ae4773822, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c166abb129657b847829bba4aed96977, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00714b749a6c5534790d873ae4773822, type: 3}
 --- !u!114 &408044576 stripped
@@ -18858,16 +18870,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
---- !u!1 &1621587091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1646262894012726834, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-  m_PrefabInstance: {fileID: 1621587090}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1621587092 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1646262893615879579, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
-  m_PrefabInstance: {fileID: 1621587090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1624642025
 PrefabInstance:
   m_ObjectHideFlags: 0
