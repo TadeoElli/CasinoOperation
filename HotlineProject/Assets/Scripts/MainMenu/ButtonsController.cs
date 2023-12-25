@@ -45,6 +45,19 @@ public class ButtonsController : Controller
         objetoControls.SetActive(objetoControlsActive);
     }
 
+    public void DeleteStats()
+    {
+        objetoLevelsActive = false;
+        objetoCustomizeActive = false;
+        objetoStatsActive = true;
+        objetoControlsActive = false;
+
+        objetoLevels.SetActive(objetoLevelsActive);
+        objetoCustomize.SetActive(objetoCustomizeActive);
+        objetoStats.SetActive(objetoStatsActive);
+        objetoControls.SetActive(objetoControlsActive);
+    }
+
 
     public void OkButton()
     {

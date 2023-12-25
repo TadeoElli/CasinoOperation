@@ -298,7 +298,7 @@ MonoBehaviour:
   newEnergy: 0
   newLevelsCompleted: 6
   newScoreTokens: 0
-  newTokens: 000000000000000000000000
+  newTokens: 000000000000000000000000000000000000
   newUnlockedSkins: 0000000000000000000000000000
   navMesh: 0
 --- !u!4 &25133218
@@ -7828,9 +7828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af222b329b794d243a8967acac61d030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 3
+  maxStamina: 5
   timeToRecharge: 2
-  currentstamina: 3
+  currentstamina: 5
   staminatext: {fileID: 20926695}
   timertext: {fileID: 1498454562}
   titleNoti: full stamina

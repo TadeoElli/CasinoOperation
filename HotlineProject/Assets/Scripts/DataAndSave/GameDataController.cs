@@ -39,9 +39,9 @@ public class GameDataController : MonoBehaviour
         }
         else
         {
-            newEnergy = 3;
+            newEnergy = 5;
             newLevelsCompleted = 0;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 18; i++)
             {
                 newTokens[i] = true;
             }

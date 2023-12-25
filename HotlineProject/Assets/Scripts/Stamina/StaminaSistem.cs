@@ -8,7 +8,7 @@ using static NotificationsManager;
 public class StaminaSistem : MonoBehaviour
 {
 
-    [SerializeField] int maxStamina = 3;
+    [SerializeField] int maxStamina = 5;
     [SerializeField] float timeToRecharge = 10;
     public int currentstamina;
 
@@ -215,8 +215,8 @@ public class StaminaSistem : MonoBehaviour
 
     public void RestartStats()
     {
-        datacontroller.newEnergy = 0;
-        datacontroller.newLevelsCompleted = 0;
+        datacontroller.newEnergy = 5;
+        datacontroller.newLevelsCompleted = 1;
         for (int i = 0; i < 12; i++)
         {
             datacontroller.newTokens[i] = true;
