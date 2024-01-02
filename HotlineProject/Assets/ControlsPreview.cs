@@ -7,6 +7,7 @@ public class ControlsPreview : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Button joystickButton, tapButton;
+    [SerializeField] private GameObject joystickImage, joystickImageOn, tapImage, tapImageOn;
     [SerializeField] private GameDataController gameDataController;
     void Start()
     {
@@ -18,6 +19,19 @@ public class ControlsPreview : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameDataController.navMesh)
+        {
+            joystickImage.SetActive(true);
+            joystickImageOn.SetActive(false);
+            tapImage.SetActive(false);
+            tapImageOn.SetActive(true);
+        }
+        else
+        {
+            joystickImage.SetActive(false);
+            joystickImageOn.SetActive(true);
+            tapImage.SetActive(true);
+            tapImageOn.SetActive(false);
+        }
     }
 }
