@@ -740,6 +740,7 @@ GameObject:
   - component: {fileID: 160650919}
   - component: {fileID: 160650918}
   - component: {fileID: 160650917}
+  - component: {fileID: 160650920}
   m_Layer: 5
   m_Name: Level 7
   m_TagString: Untagged
@@ -810,7 +811,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 160650918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556113986}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReproducirSonido
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ok_sound
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 160650920}
+        m_TargetAssemblyTypeName: EscenasManager, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &160650918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 490bd27985e36994eb5da7dbd1fb4592, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0bd935dcf9d1a184a92393a249ff96db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -849,6 +874,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160650915}
   m_CullTransparentMesh: 1
+--- !u!114 &160650920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160650915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21f53fac6c68fa4e8f8edcad9d0d2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nuevaEscena: 8
+  staminaSistem: {fileID: 0}
 --- !u!1 &169742437
 GameObject:
   m_ObjectHideFlags: 0
