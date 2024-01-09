@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int cardsInLevel, levelsCompleted;
     [SerializeField] private GameDataController datacontroller;
     [SerializeField] private LoseMenu loseMenu;
+
+    [SerializeField] public float pemCooldown;
     void Awake()
     {
         if(Instance == null)
@@ -57,6 +59,11 @@ public class GameManager : MonoBehaviour
                 
             }
         }
+
+        if(pemCooldown < 1.0f)
+        {
+            pemCooldown += 1.0f /15f * Time.deltaTime;
+        }
         
     }
 
@@ -67,5 +74,10 @@ public class GameManager : MonoBehaviour
     public void EndLevel()
     {
         loseMenu.PauseGame();
+    }
+
+    public void PEMSkill()
+    {
+        pemCooldown = 0f;
     }
 }

@@ -31,7 +31,7 @@ public class GameDataController : MonoBehaviour
 
         save_file = Application.persistentDataPath + "/gameData.json";
         Debug.Log(save_file);
-        navMesh = true;
+        navMesh = false;
         if(File.Exists(save_file))
         {
             LoadData();

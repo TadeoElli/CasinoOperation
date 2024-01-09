@@ -18,12 +18,12 @@ public class PEMSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        skillCooldown.fillAmount = GameManager.Instance.pemCooldown;
         if(skillCooldown.fillAmount >= 1.0f)
         {
             secCamera.isActive = true;
             secCamera.ActivateFeedback();
         }
-        skillCooldown.fillAmount += 1.0f/cooldown * Time.deltaTime;
     }
 
     private void OnMouseOver() {
@@ -40,7 +40,8 @@ public class PEMSkill : MonoBehaviour
     {
         secCamera.DesactivateFeedback();
         secCamera.isActive = false;
-        skillCooldown.fillAmount = 0; 
+        skillCooldown.fillAmount = 0;
+        GameManager.Instance.PEMSkill(); 
 
     }
 }
