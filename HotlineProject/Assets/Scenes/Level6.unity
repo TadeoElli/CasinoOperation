@@ -3842,10 +3842,11 @@ MonoBehaviour:
   midGoal: {fileID: 480744803}
   finishGoal: {fileID: 2147432790}
   StartPosition: {x: -0.40000153, y: -41.3, z: 0}
-  cardsInLevel: 2
+  cardsInLevel: 4
   levelsCompleted: 0
   datacontroller: {fileID: 0}
   loseMenu: {fileID: 0}
+  pemCooldown: 0
 --- !u!4 &469938199
 Transform:
   m_ObjectHideFlags: 0

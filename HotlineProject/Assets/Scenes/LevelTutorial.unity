@@ -6554,6 +6554,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313661083, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 193699184652256110, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7815,6 +7819,7 @@ MonoBehaviour:
   levelsCompleted: 0
   datacontroller: {fileID: 0}
   loseMenu: {fileID: 0}
+  pemCooldown: 0
 --- !u!4 &1713081974
 Transform:
   m_ObjectHideFlags: 0

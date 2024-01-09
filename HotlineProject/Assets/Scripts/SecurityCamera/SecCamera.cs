@@ -128,4 +128,13 @@ public class SecCamera : MonoBehaviour
         return Physics2D.Raycast(transform.position, direction, radius, objectLayer);
         //return Physics.SphereCast(transform.position,1.5f, direction, out hit, direction.magnitude, objectLayer);
     }
+
+    private void OnDrawGizmos()
+    {  
+        ///FOV Gizmos
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, _minViewRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _maxViewRadius);
+    }
 }
