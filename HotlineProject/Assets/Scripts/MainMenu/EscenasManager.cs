@@ -50,5 +50,7 @@ public class EscenasManager : MonoBehaviour
         Level5,
         Level6,
         Level7,
+        Level8,
+        Level9,
     }
 }

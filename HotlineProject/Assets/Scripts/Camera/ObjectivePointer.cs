@@ -17,7 +17,7 @@ public class ObjectivePointer : MonoBehaviour
     }
     void Start()
     {
-        minDistance = 100f;
+        minDistance = 200f;
     }
 
     // Update is called once per frame
@@ -38,11 +38,12 @@ public class ObjectivePointer : MonoBehaviour
                     minDistance = Vector3.Distance(_player.transform.position, target.position);
                     Rotate(target.position);
                 }
-                //else
-                //{
-                    //cardObjective.Remove(objective);
-                    //minDistance = 200f;
-                //}
+                /*else
+                {
+                    cardObjective.Remove(objective);
+                    minDistance = 200f;
+                }
+                */
             }
             
         }

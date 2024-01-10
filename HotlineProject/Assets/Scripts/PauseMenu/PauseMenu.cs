@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     public SoundManager soundManager;
 
-    private bool _isPaused = false;
+
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        _isPaused = true;
+
         _pauseCanvas.SetActive(true);
         Time.timeScale = 0f;
         _pauseButton.interactable = false;
@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        _isPaused = false;
+
         _pauseCanvas.SetActive(false);
         Time.timeScale = 1f;
         _pauseButton.interactable = true;

@@ -17,12 +17,16 @@ public class MovementJoystick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_dataController.navMesh)
+        if(_dataController != null)
         {
-            this.gameObject.SetActive(false);
+            if(_dataController.navMesh)
+            {
+                this.gameObject.SetActive(false);
+            }
+            joystickOriginalPos = joystickBG.transform.position;
+            joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.y / 1;
+
         }
-        joystickOriginalPos = joystickBG.transform.position;
-        joystickRadius = joystickBG.GetComponent<RectTransform>().sizeDelta.y / 1;
     }
 
     public void PointerDown()

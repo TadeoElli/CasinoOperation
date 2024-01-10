@@ -217,7 +217,7 @@ public class StaminaSistem : MonoBehaviour
     {
         datacontroller.newEnergy = 5;
         datacontroller.newLevelsCompleted = 1;
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 27; i++)
         {
             datacontroller.newTokens[i] = true;
         }

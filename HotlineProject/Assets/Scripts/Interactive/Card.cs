@@ -21,7 +21,7 @@ public class Card : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             objPointer.cardObjective.Remove(this.gameObject);
-            objPointer.minDistance = 100f;
+            objPointer.minDistance = 200f;
             GameManager.Instance.DecreaseCard();
             Destroy(this.gameObject);
         }
