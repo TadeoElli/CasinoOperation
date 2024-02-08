@@ -3598,6 +3598,7 @@ MonoBehaviour:
   levelsCompleted: 0
   datacontroller: {fileID: 0}
   loseMenu: {fileID: 0}
+  pemCooldown: 0
 --- !u!4 &469938199
 Transform:
   m_ObjectHideFlags: 0
@@ -4262,7 +4263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196829561848885583, guid: db7a3673124f49f4a85b214c0f7aa060, type: 3}
       propertyPath: actualLevel
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7a3673124f49f4a85b214c0f7aa060, type: 3}

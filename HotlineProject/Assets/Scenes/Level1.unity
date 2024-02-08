@@ -16463,6 +16463,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313661083, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539713072, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -16495,6 +16499,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0aca05b6e7eb6674dbbd9292accad859, type: 3}
+    - target: {fileID: 490102257283123340, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1196367718}
     - target: {fileID: 490102257824038449, guid: d73cf9d69b33cc14c8850a80af561923, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -23377,6 +23385,7 @@ MonoBehaviour:
   levelsCompleted: 0
   datacontroller: {fileID: 0}
   loseMenu: {fileID: 0}
+  pemCooldown: 0
 --- !u!4 &1713081974
 Transform:
   m_ObjectHideFlags: 0
